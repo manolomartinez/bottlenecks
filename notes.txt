@@ -1,0 +1,3 @@
+Dretske has two goals for information: show how it can be quantified, and show
+how information can be at the basis of representations, knowledge, etc. (in the
+beginning there was information)

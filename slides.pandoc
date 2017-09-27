@@ -1,0 +1,386 @@
+% The Rate-Distortion Function as a Guide to Content Attributions
+% Manolo Martínez (Antwerp)
+% Atención, Consciencia y Representación -- UNAM
+
+# Some preliminary concepts
+
+## The Lewis-Skyrms main model
+
+![](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
+
+## Bayes nets
+
+* A collection of nodes and directed edges (arrows), with no cycles
+* Each node is a *random variable*
+    - RVs can take any of a (discrete) set of values
+    - There is a probability distribution governing which value it is in
+
+* The value of each node is independent of the value of any other *conditional
+  on the node's parents*
+
+## $P(Message | Sender)
+
+\begin{table}[!ht]
+    \centering
+\begin{tabular}{|c||c|c|c|}
+& $M_{1}$ & $M_{2}$ & $M_{3}$ \\
+\hline
+$Sender_{1}$ & .5 & .25 & .25 \\
+$Sender_{2}$ & .33 & .33 & .33 \\
+$Sender_{3}$ & ,6 & .4 & .2 \\
+\end{tabular}
+\caption{Messages conditional on sender state}
+\end{table}
+
+## The Lewis-Skyrms main model
+
+![](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
+
+## Signaling games (i)
+
+\begin{table}[!ht]
+    \centering
+\begin{tabular}{|c||c|c|c|}
+& $S_{1}$ & $S_{2}$ & $S_{3}$ \\
+\hline
+$A_{1}$ & 5,0 & 2,4 & 0,5 \\
+$A_{2}$ & 6,5 & 0,0 & 1,6 \\
+$A_{3}$ & 0,6 & 6,6 & 5,3 \\
+\end{tabular}
+\caption{Sender and receiver payoff matrices}
+\end{table}
+
+## Some information theory (i)
+
+* The degree of uncertainty associated with the World RV can be summarized by
+  its *entropy*:
+    - Number of yes/no questions one needs to ask in order to know its
+    value.
+    - If the world can be in many, equiprobable states, entropy is high.
+    - If it can be in just a few states, or they are far from equiprobable,
+    entropy is lower. 
+
+. . .
+
+$$H(W)= -\sum_i \Pr(W_i)\log_2(\Pr(W_i))$$
+
+## Some information theory (ii)
+
+* A message, $M_i$, is informative about the world insofar as it reduces the entropy of
+  the World RV
+    - Once you know that the value of the Message RV is $M_i$, you need to ask
+    fewer yes/no questions in order to know the value of World.
+
+. . .
+
+$$H(W | M=M_i)= -\sum_j \Pr(W_j | M_i)\log_2(\Pr(W_j | M_i))$$
+
+
+## Some information theory (iii)
+
+* The *conditional entropy* of states on messages is the weighted average of
+  these contributions.
+    - How much reduction, on average, in the number of yes/no questions
+
+. . .
+
+$$H(W|M)= \sum_i \Pr(M_i)H(W|A=M_i)$$
+
+## Some information theory (iv) 
+
+* Finally, the *mutual information* between states and messages is given by the reduction in entropy
+
+$$I(W;M) = H(W) - H(W|M)$$
+
+## What do messages represent? (i)
+
+* Skyrms's *informational content* for a message $M_i$: the vector of *pointwise mutual
+  informations* between that message and all states.
+
+    $$\langle\log_2 p(W_1 | M_i) - \log_2 p(W_1), \ldots, \log_2 p(W_n | M_i) - \log_2 p(W_n)\rangle$$
+
+. . .
+
+* These are just the terms that go into calculating $H(W | M=M_i)$, as seen above.
+
+## What do messages represent? (ii)
+
+* *Propositional content* of a message $M$: the disjunction of states such that
+  they are not ruled out in the informational content. E.g. "$W_1$ or $W_2$ is
+  the case"
+
+. . .
+
+> The familiar propositional content is a rather special case of the much
+> richer information-theoretic account of content [@skyrms_signals:_2010, p. 42]
+
+## False propositional contents are impossible
+
+* Messages with false propositional content cannot be produced [@birch_propositional_2014]:
+
+    - A message meaning "$W_1$ or $W_2$ is the case" would be false if produced in
+      $S_3$
+
+    - But, if $P(W_3 | M) = 0$ (and $P(W_3) > 0$ and $P(M > 0)$) then $P(M |
+      W_3) = 0$
+
+## No explanatory payback
+
+* Simple representations do not earn their explanatory keep
+  [@burge_origins_2010; @rescorla_millikan_2013; @schulte_perceptual_2015]
+
+    - But every message in every sender-receiver system has a Skyrmsian
+      informational content (and thus a propositional one)
+
+* A popular solution: 
+    - Perceptual constancies (Burge, Schulte)
+    - Moving away from "cue-driven" representations with "narrow-banded
+      responses" (Sterelny)
+
+# The rate-distortion approach
+
+## The informational underpinnings of the popular solution
+
+* The appeal to constancies, etc. is a way of getting at yet more
+  information-theoretic properties of the sender-receiver setup.
+
+* At least certain typical, central cases of signaling setups about which
+  representational talk is compelling show a quite specific
+  information-theoretic structure.
+
+## The world is represented in a single random variable (i)
+
+![](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
+
+* A discrete menu of jointly exhaustive, *mutually exclusive* options.
+
+## The world is represented in a single random variable (ii)
+
+* This is not expressive enough, in a crucial respect:
+    - World states have features in common
+    - Plausibly, misrepresentation depends on this (same detectable cues present in the
+      good and the bad cases)
+
+## The world is represented in a single random variable (iii)
+
+* We should substitute the monolithic world states in the classical Lewis-Skyrms
+  framework with collections of RVs, linked together by a joint probability
+  distribution.
+
+    - E.g. 111111 and 000000 are two different states. In the former, 6
+      properties are instantiated; in the latter none is.
+    - 111111 and 110001 are also different, but partially overlapping, states:
+      both are such that properties $P_1$, $P_2$ and $P_6$ are instantiated.
+
+## Lossy Compression
+
+* How about this: *Representational content is a form of lossy compression*
+
+* Compression offers an excellent explanatory payback: content attributed to a
+  signal would be saying a lot about the signaling arrangement, in an economic
+  way
+
+## The extended sender-receiver framework
+ 
+1. The sender is confronted with a set of states composed of property instantiations (represented
+   by RVs), governed by a joint probability distribution.
+
+2. They then send one of a discrete, smallish set of messages
+
+3. The receiver decodes the message.
+
+## Hamming distortion
+
+* We evaluate the quality of the transmission with a *distortion measure* 
+    - The more similar original and decoded message are, the less the distortion.
+    - 111111 to 000000: distortion of 6; 111111 to 111110: distortion of 1
+    - (By the way, this distortion-measure approach is mathematically equivalent
+      to the usual payoff-matrix approach)
+
+## Not so different, really
+
+![](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
+![](graphviz/rdt.pdf){scale=0.6}
+
+## Bottlenecks!
+
+* Usually, signaling repertoires are smallish (perhaps except when repertoire
+  size itself is the signal!)
+    - Often one, sometimes two or three
+
+* The bigger the repertoire (*channel rate*) the lower the distorsion
+    - if the channel rate is equal to or larger than the entropy of states,
+      then it is possible to communicate losslessly (without distortion)
+
+* (In this paper I am interested in the ideal case---lowest attainable
+  distortion, in a situation of perfect common interest.)
+
+## The rate-distortion function
+
+* Let's start with information generated by tosses of a fair coin.
+     - What's the entropy of this system?
+
+* Let's say distortion is 1 if the decoded message is different from the
+  original one; 0 otherwise
+
+* What's the minimum distortion at rate 0?
+
+* What's the minimum rate for which distortion is 0?
+
+## RD function for a fair coin (i)
+
+![](/home/manolo/Models/rate_distortion_signaling/bernoulli_rd.pdf){scale=0.3}
+
+## RD function for a fair coin (ii)
+
+* For a coin toss the more rate you throw at it, the better, till you hit the
+  entropy of states. 
+    - There are no natural stopping points---no sweet spots
+
+## Two essence kinds
+
+![](graphviz/two_indepndent_bitbits.pdf)
+
+* Two "essence kinds" 
+    - Think of the parent as a hidden essence, and children as detectable, or
+      fitness conducive, properties.
+
+* If parent is instantiated, children have a  .95 probability of being
+  instantiated; .05 otherwise
+
+* Parents have a .5 probability of being instantiated
+
+* Jerry Mouse and Spike Bulldog
+
+
+## Sweet spots (i)
+
+![](/home/manolo/Models/rate_distortion_signaling/two_essence_kinds_rd.pdf)
+
+## Sweet spots (ii)
+
+* I suggest that our content-attributing practices are sensitive to this bit of
+  informational structure:
+
+> A sender-receiver arrangement is fruitfully described as involving
+> representations only if there are sudden drops in the usefulness of extra
+> bandwidth ("sweet spots")
+
+## Distortion-minimizing encoding (i)
+
+* And what's the encoding that minimizes distortion at the sweet spot (2 bits)?
+
+    1. Divide the state vector in two halves (one for each kind)
+    2. If in the first half there's a majority of 1s, set the first bit to 1
+       (else set it to 0)
+    3. Ditto for the second half and the second bit
+    4. Decode the resulting message substituting 1 by 11111 and 0 by 00000
+
+* E.g., 11100 011000 encodes to 10, which in turn decodes to 11111 00000
+
+## Distortion-minimizing encoding (ii)
+
+![](/home/manolo/Models/rate_distortion_signaling/two_essence_kinds_rd_with_majority.pdf)
+
+## Misrepresentation
+
+* Now, misrepresentation is perfectly possible.
+
+* From a purely informational perspective: whenever the decoded and the
+  original message are different.
+
+* From a representational perspective, it's natural to read the
+  distortion-minimizing encoding as representing the presence or absence of the
+  two essence kinds
+    - An instance of a kind might be represented in its absence.
+    - When does the kind count as instantiated (presence of the parent node? A majority of its
+      properties?) is an open question---but the above is true under any
+      reasonable answer.
+
+## Constancy / robustness vs cue-driven behavior (i)
+
+1. Set the first bit to 1 if a certain child node in the first half is 1
+2. Ditto for the second half
+3. Decode as above.
+
+## Constancy / robustness vs cue-driven behavior (ii)
+
+![](/home/manolo/Models/rate_distortion_signaling/two_essence_kinds_rd_with_child.pdf)
+
+## Constancy / robustness vs cue-driven behavior (ii)
+
+* Constancy / robustness improves the quality of the encoding
+
+* I suggest that our content-attributing practices are sensitive to this
+  *other* bit of informational structure:
+
+. . .
+
+> A sender-receiver arrangement is more clearly representational the more it
+> approaches the distortion-minimizing encoding
+
+## Broad-banded response (i)
+
+* Now, on the receiver side, is there a similar motivation for the preference
+  for broad-banded responses?
+
+* Suppose that the receiver has no use for all that information about the
+  state---it just cares about a certain fitness-conducive property.
+    - That is, we introduce a new distortion measure: 0 if the value for, e.g.,
+      $P_2$ is correctly decoded; 1 otherwise.
+    - "1111100000" and "0100011111" have a distortion measure of 0.
+    - This is the way magnetotactic bacteria are usually described.
+
+## Broad-banded response (ii)
+
+![](/home/manolo/Models/rate_distortion_signaling/two_essence_simple_rd.pdf)
+
+## Broad-banded response (iii)
+
+* Caring about only one property changes the structure of the problem (to a
+  coin toss)
+
+* Using a different detectable property, moreover, lands the encoding way above
+  the rate-distortion curve.
+
+* Without sweet spots, and far from the distortion-minimizing encoding, content
+  attributions have no explanatory payback.
+
+# Conclusions
+
+## Conclusions
+
+* Information---there's lots of it. But we need more expressive power than
+  the usual Lewis-Skyrms formalism has.
+    - In particular, worlds represented as groups of probabilistically connected RVs
+
+* Worlds thus described induce a rate-distortion curve. I have suggested that
+  some of the explanatory payback of representational talk depends on 
+  
+    1. The existence of natural resting points in the curve, and
+    2. The ability of sender and receiver to use an encoding in the vicinity of
+       the curve
+
+* Vervet monkey alarm calls have this structure --- magnetotatic bacteria do
+  not.
+
+## A possible mechanism for content attribution
+
+* When researchers are confronted with a simple signaling system they
+  (tacitly!) try to find a rate distortion problem it might be solving...
+
+* ... and whether it is actually being solved.
+
+* The clearer it is these two questions are answered in the affirmative, the
+  better candidate for representational status this is.
+
+## Three (among very many) outstanding questions
+
+* What happens if we relax the common interest assumption?
+
+* How does this play out in an evolutionary game-theoretic setting?
+
+* Is there a general role for the rate-distortion function to play in
+  representation?
+
+## Thanks!

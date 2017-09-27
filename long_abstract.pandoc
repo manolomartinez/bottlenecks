@@ -1,0 +1,121 @@
+% Sweet Spots and Bottlenecks
+
+# Introduction
+
+This paper aims at improving our understanding of the relation between
+representations and Shannon information. The main idea will be that much of the
+work we want representations to do can be done by structures which can be
+specified in purely Shannon-information-theoretical terms, and that these structures
+are best captured by using concepts in *rate-distortion theory [RDT]* 
+  
+RDT applies to situations in which information about a source is communicated
+over a channel that is not wide enough to accommodate lossless transmission.
+RDT, among other things, aims at specifying the dependence of the minimum
+amount of distortion between original and decoded messages on the width of the
+channel. The presence of such informational bottlenecks is ubiquitious (if not
+universal) in systems that we want to credit with representations. The paper
+explores the idea that the existence of certain optimal ways of negotiating
+these bottlenecks is part of what we track with representational talk.
+
+# Some preliminary concepts
+
+I will be assuming the very popular *sender-receiver* [SR] framework, utilized
+both in teleosemantic approaches [@millikan_language_1984] and game-theoretic
+treatments [@skyrms_signals:_2010] of representation. In the framework, a
+sender perceives the state of the world, then sends a message to a receiver
+which acts back on the world. The payoff of this interaction is fixed by the
+combination of world state and receiver action (see fig. 1.)
+
+![The sender-receiver model](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
+
+There are a few attempts to use Shannon-informational notions to give an
+account of (not just the quantity of information transferred from sender to
+receiver but) what it is that messages represent in these sort of models
+[summarized in @stegmann_prospects_2015]. One popular such attempt is Skyrms's
+*informational content* of a message M, defined as the *pointwise mutual
+information* between M and all world states. Skyrms also claims that, if one so
+wishes, a notion of representational content falls out from this informational
+content: it corresponds to the nonzero entries in the informational-content
+vector in which there is some mutual information (giving contents along the
+lines of *$S_1$ or $S_2$ is the case.*) This approach is unable to accommodate
+the existence of false representational content [@birch_propositional_2014],
+and is thus inadequate.
+
+# The Rate-Distortion Approach
+
+A big problem with the SR model we have been considering so far is that the
+world is represented by a single RV. I.e., a menu of jointly exhaustive,
+mutually exclusive states. This is not expressive enough: we need to model the
+world not as a single RV, but rather as a collection of RVs---i.e., as a
+subgraph on its own right. For example, we can think of each of the RVs in the
+world subgraph as modeling the instantiation of a single property. A "world
+state" would be thus given by the joint pattern of instantiations of these
+properties. 
+
+The main idea I will be exploring in what follows is that the explanatory
+payback that representational talk is supposed to have is met, in at least some
+important cases, by representations *lossily compressing* information about the
+world. Representations say a lot (that is relevant to the signaling partners)
+about the world, in an economic way. In most signaling arrangements, what
+should ideally be communicated about the world outstrips the capacity of the
+channel. One can thus see signaling arrangements as solving a rate-distorton
+problem: how large should the signaling repertoire be (that is, how much
+bandwidth / rate should the channel have) so as to minimize distortion, without
+incurring in too expensive signaling costs. Are there "sweet spots" in the rate
+distortion function?
+
+![The rate-distortion function for a coin
+toss](/home/manolo/Models/rate_distortion_signaling/bernoulli_rd.pdf){scale=0.3}
+
+Fig. 2 gives the rate distortion function for a world that consists in tosses
+of a fair coin. The blue line is the rate-distortion function: rate in the
+x-axis, distortion in the y-axis. The red line is the slope of the blue line:
+closer to horizontal means a steeper rate-distortion curve. There are no sweet
+spots here: from 0 to 1 bit, the more rate you throw at the channel, the
+better. One may say that messages "represent" the outcome of the coin, if one
+so wishes, but this gives us nothing by way of explanatory payback.
+
+But not all problems are like the coin-toss problem. Usually there is much more
+structure to the world which the signaling arrangement can latch onto.
+Representations do have explanatory payback in these other cases. Take, e.g.
+(fig. 3) a world consisting of two "essence kinds", that can be independently
+presence. The essence is highly predictive of the presence of the whole
+property cluster
+
+![Two essence kinds](graphviz/two_indepndent_bitbits.pdf)
+
+The rate-distortion function corresponding to this situation (in fig. 4) is
+very different to the coin-toss one. Here, there is a very pronounced "elbow"
+in the blue line---i.e., a sudden drop in its slope, as shown by the red line.
+a rate of 2 bits is one of the "sweet spots" alluded to above: there is a
+sudden drop in the usefulness of extra bandwith past the 2-bit threshold.
+
+![A sweet spot in the rate-distortion
+function](/home/manolo/Models/rate_distortion_signaling/two_essence_kinds_rd_with_majority.pdf)
+
+I suggest that our content-attributing practices are sensitive to this bit of
+informational structure: *A sender-receiver arrangement is fruitfully described
+as involving representations only if there are sudden drops in the usefulness
+of extra bandwidth ("sweet spots")*.
+
+Does the RD function also offer guidance as to the representationa content of
+the messages? It does: we look into what combinations of encoding and decoding
+strategies land the sender-receiver arrangment onto the optimal rate-distortion
+curve, at the sweet spot: 
+
+1. Divide the state vector in two halves (one for each kind)
+2. If in the first half there's a majority of 1s, set the first bit to 1
+   (else set it to 0)
+3. Ditto for the second half and the second bit
+4. Decode the resulting message substituting 1 by 11111 and 0 by 00000
+
+This encoding-decoding strategy corresponds to the blue x on fig. 4: it's an
+optimal strategy. When they receive a message, the receiver paints a simplified
+picture, according to which the paradigmatic instance of each of the kinds
+(i.e., those in which all properties in the cluster are instantiated) is
+present or absent. I suggest that our content-attributing practices are
+sensitive to this *other* bit of informational structure: *a sender-receiver
+arrangement is more clearly representational the more it approaches the
+distortion-minimizing encoding.*
+
+# References {-}

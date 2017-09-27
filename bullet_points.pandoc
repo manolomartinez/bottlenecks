@@ -1,0 +1,267 @@
+# Intro
+
+* This paper aims at clarifying the relation between "semantic information"
+  efforts and Shannon information. 
+
+* It also aims at explaining the temptation of some theorists to make
+  naturalistic metasemantics rely on natural kinds, by saying that primitive
+  intentional states refer preferentially to such kinds (Sterelny has done this,
+  as have I, in different ways). This is also related to ideas floated in other
+  philosophical quarters, according to which there are "reference magnets"
+  (Lewis, Sider) that reference attaches to preferentially.
+
+* The main idea will be that at least some of the work we want semantic
+  information to do can be done by structures which can be specified in purely
+  Shannon-information-theoretical terms. This suggests that semantic
+  information is just more Shannon information.
+
+* The "structures" alluded to above are best captured by using concepts in
+  *rate-distortion theory [RDT]* 
+  
+* RDT applies to situations in which information about a source is communicated
+  over a channel that is not wide enough to accommodate lossless transmission.
+  RDT,among other things, aims at specifying the dependence of the minimum
+  amount of distortion between original and decoded messages on the width of
+  the channel.
+
+* Distortion can be specified, in the simplest cases, simply as how many
+  incorrect bits are decoded. It can also take arbitrarily complicated forms.
+
+* The presence of such informational bottlenecks is ubiquitious (if not
+  universal) in systems that we want to credit with representations. The paper
+  explores the idea that the existence of certain optimal ways of negotiating
+  these bottlenecks is part of what we track with representational talk.
+
+# Some preliminary concepts
+
+* I will be assuming the very popular *sender-receiver* framework, utilized
+  both in teleosemantic approaches (Millikan) and game-theoretic treatments
+  (Skyrms).
+
+* [p. 4 -- numbers refer to pages of the pdf] In the SR framework, a sender
+  perceives the state of the world, then sends a message to a receiver which
+  acts back on the world. In *cheap talk* cases, the payoff of this interaction
+  is fixed by the combination of world state and receiver action.
+
+* [p. 5] in what follows it will be useful to think of SR systems as Bayes
+  networks (which they are). A Bayes net is a collection of nodes connected by
+  directed edges (arrows). We say that that if an arrow goes from node A to
+  node B, A is a parent to B (B a child to A).
+  
+* Each of the nodes in the figure (world, sender, message, receiver, act and
+  payoff) is a *random variable* [RV] which can take a menu of possible values,
+  and is governed by a probablity distribution over these same values. 
+
+* Furthermore, in Bayes nets, each node N is independent from every other node,
+  conditional on the value of N's parents. For example, in p. 4, once we know
+  the value of the Message node (i.e., once we know which message has been
+  sent), no more information about the Receiver node (i.e., about what the
+  receiver will do) can be gathered from knowing the state of any other node in
+  the network (say, the Sender node.)
+
+* [p. 9] In SR models the evolution of strategies of sender and receivers (i.e., the
+  probability distributions governing those RVs) depends on payoffs obtained. I
+  won't be discussing evolution in this paper (igual saco esta slide, no sé si
+  es muy útil)
+
+* [p. 11] In this setup, one way of quantifying the quality of the communication
+  between sender and receiver is by using *Shannon information*:
+
+* What is unknown about the world (i.e., the value of the World RV) is given by
+  the *entropy* of the node.
+
+* [p. 12] The way in which message reduce uncertainty about the world is given
+  by *conditional entropu*, which is then summarized as *mutual information*.
+  High MI between State and Message correspnds to a highly informative sender.
+
+* Now, can be use these simple informational notions to give an account of (not
+  just the quantity of information but) what it is that messges represent?
+  There are a few attempts to do this (summarized by Stegmann 2015 "Prospects
+  for a probabilistic theory of natural information")
+
+* [p. 18] One popular such attempt is Skyrms's own of defining the *informational
+  content* of a message M by giving the *pointwise mutual information* between
+  M and all world states. This are just all the terms that go into calculating
+  I(S; M), as seen above.
+
+* Skyrms also claims that, if one so wishes, a notion of representational
+  content falls out from this informational content: it corresponds to the
+  nonzero entries in the informational-content vector in which there is some mutual
+  information (giving contents along the lines of *S_1 or S_2 is the case.*)
+
+* [p. 19] This is a bad notion of representational content [PC] for at least two
+  reasons: 
+  
+* First, as Birch explains, it makes false RCs impossible.
+
+* [p. 22] Second, an influential contemporary objection to naturalistic metasemantics
+  such as Millikan's or Skyrms's is that we want reprentations to play an
+  explanatory role over and above that played by Shannon information. Not all
+  messages in not all SR systems should count as representation. That's way too
+  liberal. But all messages in all SR configurations have a Skyrmsian
+  representational content.
+
+* One popular family of ideas about what the right explanatory payback should
+  look like: it is related to the presence of perceptual constancies (Burge),
+  or what Sterelny calls "broad-banded representations": 
+  
+* Broad-banded Rs: If a message is to count as a representation, it should not
+  just be "cue-driven", i.e., caused to token by the presence of this or that world
+  state. It should respond to the world in a more sophisticated fashion.
+
+* [p. 28] Pretty much what the slide says :)
+
+# The Rate-Distortion Approach
+
+* [p. 33] A big problem with the SR Bayes net we have been considering so far is that
+  the world is represented by a single RV. I.e., a menu of jointly exhaustive,
+  mutually exclusive states.
+
+* This is not nearly expressive enough and, e.g., lies at the heart of the problem
+  with false representations Birch pointed out (see above): plausibly
+  in at least many cases misrepresentation depends on one single feature being
+  present in both the good and the bad cases (say, bushes moving in a certain
+  alarming pattern happening both when a snake is roaming about and when a
+  harmless mammal is; both result in the production of an alarm call, which is
+  only correct in the former situation.)
+
+* [p. 34] Fortunately, Bayes nets offer a simple way to solve this: we need to model
+the world not as a single RV, but rather as a collection of RVs---i.e., as a
+subgraph on its own right.
+
+* For example, we can think of each of the RVs in the world subgraph as
+  modeling the instantiation of a single property. A "world state" would be
+  thus given by the joint pattern of instantiations of these properties. (The
+  111111 / 000000 / 110001 example in the slide.)
+
+* [p. 37] There is much information that can be potentially communicated about
+  such as world: an arbitrary state corresponds to an arbitrary sequence of 6
+  0s or 1s, and in total there are 2^6 = 64 of these.
+
+* The main idea I will be exploring in what follows is that the kind of
+  "explanatory payback" requirement alluded to above is met, in at least some
+  important, paradigmatic cases, by representations *lossily compressing*
+  information about the world. Representations say a lot (that is relevant to
+  the signaling partners) about the world, in an economic way.
+
+* [p. 39] To recap: I will now consider an extended SR model in which the word
+  corresponds to a set of connected RVs (i.e., a subgraph of the Bayes net).
+  The sender is confronted with the state of such a world and sends a message
+  that encodes the world state to a receiver which then decodes it.
+
+* [p. 42] The quality of this SR arrangement wil be given by a *distortion
+  measure*. To simplify, this will just be the amount of bits that the decoding
+  gets wrong.
+
+* Probablemente aquí debería tener un dibujo más explícito.
+
+* [p. 46] In most signaling arrangements, what should be ideally communicated
+  about the world outstrips the capacity of the channel. E.g., there are many
+  useful things that vervet monkeys could potentially say about predators, but
+  behavioral ecologists recognize only three different kinds of alarm calls.
+
+* This is because large signaling repertoires are expensive, both from the
+  cognitive and the production sides.
+
+* One can thus see signaling arrangements as solving a rate-distorton problem:
+  how large should the signaling repertoire be (that is, how much bandwidth / rate
+  should the channel have) so as to minimize distortion, without incurring in
+  too expensive signaling costs. Are there "sweet spots" in the rate distortion
+  function?
+
+* [p. 51] For fair coin tosses, the minimum distortion at rate 0 is 0.5 (if you
+  don't send *any* information about the result of the toss, the best the
+  receiver can do is "decode" by saying that the coin always lands, say, heads;
+  it will be correct in half of the cases)
+  
+* The minimum rate for which distortino is 0 es 1 bit (with 1 bit you can just
+  communicate the result of the toss perfectly, say, 0 correspnds to heads and
+  1 to tails)
+
+* [p. 55] The blue line is the rate-distortion function: rate in the x-axis,
+  distortion in the y-axis. The red line is the slope of the blue line: closer
+  to horizontal means a steeper rate-distortion curve.
+
+* [p. 56] No sweet spots here: from 0 to 1 bit, the more rate you throw at the
+  channel, the better.
+
+* One can say that messages "represent" the outcome of the coin, if one so
+  wishes, but this gives you nothing by way of explanatory payback.
+
+* But not all problems are like the coin-toss problem. Usually there is much
+  more structure to the world which the signaling arrangement can latch onto.
+  Representations do have explanatory payback in these other cases.
+
+* [p. 62] A world consisting of two "essence kinds", that can be independently
+  presence. The essence is highly predictive of the presence of the whole
+  property cluster
+
+* [p. 64] The rate-distortion function corresponding to this situation is very
+  different to the coin-toss one. Here, there is a very pronounced "elbow" in
+  the blue line---i.e., a sudden drop in its slope, as shown by the red line. a
+  rate of 2 bits is one of the "sweet spots" alluded to above: there is a
+  sudden drop in the usefulness of extra bandwith past the 2-bit threshold.
+
+* [p. 65] What the slide says.
+
+* [p. 66] So far, I have argued, the identification of a sweet spot in the
+  rate-distortion function gives us a criterion of representational status:
+  these are the sort of problems where postulating representations is usefu.
+  But, does the RD function offer guidance as to the representationa content of
+  the messages?
+
+* For this, we look into what combination of encoding and decoding strategies
+  land the sender-receiver arrangment onto the optimal rate-distortion curve,
+  at the sweet spot. This is given in the slide.
+
+* [p. 72] Yep, this is on the curve (the blue x)
+
+* [p. 73] So the receiver paints a simplified picture, according to which the
+  paradigmatic instance of each of the kinds (i.e., those in which all
+  properties in the cluster are instantiated) is present or absent. 
+
+* Here, misrepresentation is perfectly possible, in two senses: 
+
+* First, the original state of the world and the decoded message can be
+  different.
+
+* Second, it is natural to read the distortion-minimizing strategy at the sweet
+  spot as encoding the presence or absence of each of the two essence kinds.
+  Note that now we are sliding into representational talk: we are reflecting on
+  how the distortion-minimizing strategy builds on the structure present in the
+  world.
+
+* [p. 78] We now have a purely information explanation of why broad-banded
+  responses are better than cue-driven ones. A cue-driven encoding strategy
+  would correspond to the sender paying attention to just one property in the
+  cluster (as presented in the slide). 
+
+* [p. 81] This results in a suboptimal strategy (the blue x is above the curve,
+  has higher distortion)
+
+* [p. 85] What the slide says
+
+* [p. 86] This explains why it pays off for the sender to move away from simply
+  cue-driven behavior. Sterelny also claims that in paradigmatic cases of
+  representations, these are also consumed (i.e., acted on) in broad-banded
+  ways. That is, representations do not just correspond to one simple action,
+  but participate in action production in a more nuanced way.
+
+* In the present framework this can be modeled as the receiver caring only for
+  one property in the world being or failing to be instantiated. (See the
+  slide)
+
+* [p. 91] This effectively turns the problem into a coin toss. If the sender is
+  using a different property as evidence for the one the receiver is interested
+  in, this moreover lands the arrangement above the distortion curve (this is
+  the blue x at the right of the plot)
+
+# Conclusions
+
+* Apart from what I say in the slides, I should perhaps remark that I do not
+  intend the foregoing discussion as providing anything like necessary (or,
+  really, sufficient) conditions for the presence of representations, nor
+  watertight recipes for the calculation of their content. I simply aim at
+  uncovering a series of informational properties of sender-receiver
+  arrangements that seem to track, and make better sense of, some of our
+  representational talk.
