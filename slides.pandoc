@@ -1,6 +1,71 @@
-% The Rate-Distortion Function as a Guide to Content Attributions
+% No hay más información que la información de Shannon
 % Manolo Martínez (Antwerp)
-% Atención, Consciencia y Representación -- UNAM
+% Valencia Colloquium -- Diciembre 2017
+
+# Introduction
+
+## Perceptual content from below
+
+* Two ways (among several) to get to the representational content of
+  perceptions:
+
+1. From above 
+    - Reports of perceptual judgements
+    - Action guidance
+
+2. From below
+    - Applying a metasemantic theory to perceptual vehicles
+
+## The liberality problem
+
+* The core metasemantics: content is constituted by information (plus function)
+  [@millikan_language_1984; @shea_representation_forth; @skyrms_signals_2010] 
+
+* A problem in the approach from below: 
+    - Focusing on information (plus function) results in liberal accounts,
+      which credit the states of very simple systems with representational
+      content.
+
+* In such systems, representational content has no explanatory traction
+  [@burge_origins_2010; @rescorla_millikan_2013; @schulte_perceptual_2015]
+
+## A common fix
+
+* Representational content only inheres in systems which, over and above
+  carrying information about distal states of affairs, are *many to one* and/or
+  *one to many* in various ways:
+    - Many to one: Perceptual constancies (Burge, Schulte)
+    - One to many; Broad-banded response (Sterelny)
+
+## A better fix 
+
+* A better fix to the liberality problem in information-based accounts is...
+  more information.
+
+* Typical information-theoretic models of representation are too simplistic.
+    - Once we (slightly) increase their expressive power, several key
+      properties come into focus.
+
+## The proposal in a nutshell
+
+* A family of paradigmatically representational systems:
+
+1. Information passes through a *bottleneck*
+2. There is a *sweet spot* in the trade-off between accuracy and the width of
+   the bottleneck
+3. The system operates near the sweet spot.
+
+## The scope of the proposal
+
+* These three conditions are neither necessary nor (perhaps?) sufficient) for
+  representational status.
+    - They merely characterize a central case of representation in simple
+      systems.
+
+* When they hold, representational talk has explanatory traction. Many-to-one-to-many
+  constraints fall out naturally from the informational setup.
+    - They are not really additional constraints on representational systems
+
 
 # Some preliminary concepts
 
@@ -8,33 +73,19 @@
 
 ![](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
 
-## Bayes nets
-
-* A collection of nodes and directed edges (arrows), with no cycles
-* Each node is a *random variable*
-    - RVs can take any of a (discrete) set of values
-    - There is a probability distribution governing which value it is in
-
-* The value of each node is independent of the value of any other *conditional
-  on the node's parents*
-
-## $P(Message | Sender)
+## $P(Message | Sender)$
 
 \begin{table}[!ht]
     \centering
 \begin{tabular}{|c||c|c|c|}
 & $M_{1}$ & $M_{2}$ & $M_{3}$ \\
 \hline
-$Sender_{1}$ & .5 & .25 & .25 \\
-$Sender_{2}$ & .33 & .33 & .33 \\
-$Sender_{3}$ & ,6 & .4 & .2 \\
+$W_{1}$ & .5 & .25 & .25 \\
+$W_{2}$ & .33 & .33 & .33 \\
+$W_{3}$ & .6 & .4 & .2 \\
 \end{tabular}
-\caption{Messages conditional on sender state}
+\caption{A sender strategy}
 \end{table}
-
-## The Lewis-Skyrms main model
-
-![](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
 
 ## Signaling games (i)
 
@@ -50,12 +101,16 @@ $A_{3}$ & 0,6 & 6,6 & 5,3 \\
 \caption{Sender and receiver payoff matrices}
 \end{table}
 
+## The Lewis-Skyrms main model
+
+![](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
+
 ## Some information theory (i)
 
 * The degree of uncertainty associated with the World RV can be summarized by
   its *entropy*:
-    - Number of yes/no questions one needs to ask in order to know its
-    value.
+    - Number of yes/no questions one needs to ask in order to know the state of
+      the world.
     - If the world can be in many, equiprobable states, entropy is high.
     - If it can be in just a few states, or they are far from equiprobable,
     entropy is lower. 
@@ -75,23 +130,6 @@ $$H(W)= -\sum_i \Pr(W_i)\log_2(\Pr(W_i))$$
 
 $$H(W | M=M_i)= -\sum_j \Pr(W_j | M_i)\log_2(\Pr(W_j | M_i))$$
 
-
-## Some information theory (iii)
-
-* The *conditional entropy* of states on messages is the weighted average of
-  these contributions.
-    - How much reduction, on average, in the number of yes/no questions
-
-. . .
-
-$$H(W|M)= \sum_i \Pr(M_i)H(W|A=M_i)$$
-
-## Some information theory (iv) 
-
-* Finally, the *mutual information* between states and messages is given by the reduction in entropy
-
-$$I(W;M) = H(W) - H(W|M)$$
-
 ## What do messages represent? (i)
 
 * Skyrms's *informational content* for a message $M_i$: the vector of *pointwise mutual
@@ -99,9 +137,6 @@ $$I(W;M) = H(W) - H(W|M)$$
 
     $$\langle\log_2 p(W_1 | M_i) - \log_2 p(W_1), \ldots, \log_2 p(W_n | M_i) - \log_2 p(W_n)\rangle$$
 
-. . .
-
-* These are just the terms that go into calculating $H(W | M=M_i)$, as seen above.
 
 ## What do messages represent? (ii)
 
@@ -109,10 +144,10 @@ $$I(W;M) = H(W) - H(W|M)$$
   they are not ruled out in the informational content. E.g. "$W_1$ or $W_2$ is
   the case"
 
-. . .
+. . . 
 
 > The familiar propositional content is a rather special case of the much
-> richer information-theoretic account of content [@skyrms_signals:_2010, p. 42]
+> richer information-theoretic account of content [@skyrms_signals_2010, p. 42]
 
 ## False propositional contents are impossible
 
@@ -132,21 +167,17 @@ $$I(W;M) = H(W) - H(W|M)$$
     - But every message in every sender-receiver system has a Skyrmsian
       informational content (and thus a propositional one)
 
-* A popular solution: 
-    - Perceptual constancies (Burge, Schulte)
-    - Moving away from "cue-driven" representations with "narrow-banded
-      responses" (Sterelny)
+## Improving the model
+
+* I will urge two changes:
+
+1. World structure is relevant: The monolithic *World* random variable should
+   be substituted with a collection of RVs
+
+2. Rate distortion theory is the right tool to describe Lewis-Skyrms
+   models---if we are interested in representation.
 
 # The rate-distortion approach
-
-## The informational underpinnings of the popular solution
-
-* The appeal to constancies, etc. is a way of getting at yet more
-  information-theoretic properties of the sender-receiver setup.
-
-* At least certain typical, central cases of signaling setups about which
-  representational talk is compelling show a quite specific
-  information-theoretic structure.
 
 ## The world is represented in a single random variable (i)
 
@@ -158,8 +189,10 @@ $$I(W;M) = H(W) - H(W|M)$$
 
 * This is not expressive enough, in a crucial respect:
     - World states have features in common
-    - Plausibly, misrepresentation depends on this (same detectable cues present in the
-      good and the bad cases)
+    - Plausibly, misrepresentation often depends on this (e.g., same detectable
+      cues present in the good and the bad cases)
+    - (The move from events to random variables in probability theory---two
+      independent coins)
 
 ## The world is represented in a single random variable (iii)
 
@@ -172,15 +205,7 @@ $$I(W;M) = H(W) - H(W|M)$$
     - 111111 and 110001 are also different, but partially overlapping, states:
       both are such that properties $P_1$, $P_2$ and $P_6$ are instantiated.
 
-## Lossy Compression
-
-* How about this: *Representational content is a form of lossy compression*
-
-* Compression offers an excellent explanatory payback: content attributed to a
-  signal would be saying a lot about the signaling arrangement, in an economic
-  way
-
-## The extended sender-receiver framework
+## Rate distortion theory (i)
  
 1. The sender is confronted with a set of states composed of property instantiations (represented
    by RVs), governed by a joint probability distribution.
@@ -189,7 +214,7 @@ $$I(W;M) = H(W) - H(W|M)$$
 
 3. The receiver decodes the message.
 
-## Hamming distortion
+## Rate distortion theory (ii)
 
 * We evaluate the quality of the transmission with a *distortion measure* 
     - The more similar original and decoded message are, the less the distortion.
@@ -197,7 +222,12 @@ $$I(W;M) = H(W) - H(W|M)$$
     - (By the way, this distortion-measure approach is mathematically equivalent
       to the usual payoff-matrix approach)
 
-## Not so different, really
+## Rate distortion theory (iii)
+
+* The main RDT question: what's the relation between the rate (size of message
+  repertoire) and distortion?
+
+## Not so different from the usual approach, really
 
 ![](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
 ![](graphviz/rdt.pdf){scale=0.6}
@@ -206,7 +236,8 @@ $$I(W;M) = H(W) - H(W|M)$$
 
 * Usually, signaling repertoires are smallish (perhaps except when repertoire
   size itself is the signal!)
-    - Often one, sometimes two or three
+    - In animal communication, often one, sometimes two or three
+    - In any event, much smaller than all there is to be said about the world
 
 * The bigger the repertoire (*channel rate*) the lower the distorsion
     - if the channel rate is equal to or larger than the entropy of states,
@@ -214,6 +245,18 @@ $$I(W;M) = H(W) - H(W|M)$$
 
 * (In this paper I am interested in the ideal case---lowest attainable
   distortion, in a situation of perfect common interest.)
+
+## Lossy Compression
+
+* How about this: *Representational content is a form of lossy compression*
+
+* Compression offers an excellent explanatory payback: content attributed to a
+  signal would be saying a lot about the signaling arrangement, in an economic
+  way
+
+* At least some of our representational practices are sensitive to how good a
+  compression can be achieved at various channel rates.
+
 
 ## The rate-distortion function
 
@@ -224,6 +267,7 @@ $$I(W;M) = H(W) - H(W|M)$$
   original one; 0 otherwise
 
 * What's the minimum distortion at rate 0?
+    - i.e., when *no* message is sent.
 
 * What's the minimum rate for which distortion is 0?
 
@@ -237,7 +281,7 @@ $$I(W;M) = H(W) - H(W|M)$$
   entropy of states. 
     - There are no natural stopping points---no sweet spots
 
-## Two essence kinds
+## A more interesting world: two "essence kinds"
 
 ![](graphviz/two_indepndent_bitbits.pdf)
 
@@ -250,9 +294,6 @@ $$I(W;M) = H(W) - H(W|M)$$
 
 * Parents have a .5 probability of being instantiated
 
-* Jerry Mouse and Spike Bulldog
-
-
 ## Sweet spots (i)
 
 ![](/home/manolo/Models/rate_distortion_signaling/two_essence_kinds_rd.pdf)
@@ -260,7 +301,9 @@ $$I(W;M) = H(W) - H(W|M)$$
 ## Sweet spots (ii)
 
 * I suggest that our content-attributing practices are sensitive to this bit of
-  informational structure:
+  informational structure in the problem signaling is solving:
+
+. . . 
 
 > A sender-receiver arrangement is fruitfully described as involving
 > representations only if there are sudden drops in the usefulness of extra
@@ -351,18 +394,20 @@ $$I(W;M) = H(W) - H(W|M)$$
 ## Conclusions
 
 * Information---there's lots of it. But we need more expressive power than
-  the usual Lewis-Skyrms formalism has.
-    - In particular, worlds represented as groups of probabilistically connected RVs
+  the usual Dretskean information measures have
+    - Shannon's theory is a source-channel theory. We need that.
+    - Also, worlds represented as groups of probabilistically connected RVs
 
-* Worlds thus described induce a rate-distortion curve. I have suggested that
-  some of the explanatory payback of representational talk depends on 
+* Worlds thus described + agent interests and goals induce a rate-distortion
+  problem. I have suggested that some of the explanatory payback of
+  representational talk depends on 
   
     1. The existence of natural resting points in the curve, and
     2. The ability of sender and receiver to use an encoding in the vicinity of
        the curve
 
-* Vervet monkey alarm calls have this structure --- magnetotatic bacteria do
-  not.
+* Object recognition, alarm calls have this structure --- oxygen-poor water
+  detection in magnetotatic bacteria does not.
 
 ## A possible mechanism for content attribution
 
