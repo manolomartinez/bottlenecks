@@ -343,10 +343,6 @@ single cue. Single-cue detection works very well when the environment is
 a property relevant to the agent's fitness and a cue the agent can detect.
 
 
-
-
-
-
 [^1]: That is, the unconditional probability of state $S_i$ is just the
     probability that $S_i$ and $M_1$ jointly happen, or $S_i$ and $M_2$ jointly
     happen, or... etc., for all messages. 
