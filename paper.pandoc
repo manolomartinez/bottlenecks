@@ -1,0 +1,359 @@
+% Sweet Spots, Bottlenecks and the Emergence of Non-natural Information
+
+# Introduction
+
+Claude E. Shannon's "A Mathematical Theory of Communication", the astonishing
+paper in which he lays the foundations of information theory, was first
+published in 1948, and subsequently republished in book form in 1949 as "The
+Mathematical Theory of Communication". In their foreword to the 50th
+anniversary edition of this book Blahut and Hajek remark that this change in
+title is "both trivial and profound" [@shannon_mathematical_1998, p. vii]. It
+is profound indeed: in one year it had become apparent to Shannon that his was
+not just a possible theoretical approach but, quite simply, *the* theory of
+information.
+
+The study of information is essential to a number of philosophical programs. In
+particular, unsurprisingly, it is widely seen as essential to the study of
+communication and mental representation. Yet philosophers working on these
+programs often take themswelves not to be centrally concerned with "Shannon
+information", as it is often put. This perception is wrong. Shannon's theory of
+information is *the* theory of information. 
+
+I intend to make good on this last assertion by canvassing a fully (Shannon)
+informational derivation of the representational content of brain vehicles, in
+a certain paradigmatic situation. This description will show how a number of
+apparently disparate threads in the literature on naturalistic metasemantics
+actually belong in the same coherent picture. Among these threads, first, the
+claim, advanced by Sterelny, Burge, and Rescorle among others that
+representation is to be distinguished from mere information transduction by the
+former holding a many-to-one relation to inputs, and a one-to-many relation to
+outputs (in a sense to be explained below). A second thread is the claim that
+natural kinds, and other "reference magnets"  are by-default preferable as
+candidates to figure in the content of simple representations (Sterelny, Lewis,
+Sider). A third thread is the supposed inability of informational accounts to
+account for misrepresentation, and therefore the supposed need to distinguish
+between natural and non-natural information (Scarantino, Birch, Neander). In
+all three threads the transition from mere information processing to
+representation is thought to be mediated by the addition of further conditions:
+architectural constraints in the first thread; metaphysical constraints on the
+represented world, in the second thread; combination of different,
+extra-informational solutions have been tried for the third. In what follows I
+show that these different extra-informational ideas in fact fall out of a
+sufficiently expressive information-theoretic description model of
+representation. 
+
+Most (I am tempted to say, all)  philosophical discussion of
+information-theoretic ideas is a reaction to two seminal bodies of work. On the
+one hand Dretske's [-@dretske_knowledge_1981] and [-@dretske_explaining_1988]
+presentations. On the other hand, Brian Skyrms' evolutionary game-theoretic
+*sender-receiver models* [-@skyrms_signals_2010]. Both traditions simplify
+information-theoretic models in the same key respects. They model the world as
+a set of mutually exclusive, jointly exhaustive states. This makes the models
+oblivious to the *internal structure* of world states, how property
+instantiations in these states are related with one another, and with what
+happens when the world is in other states. The consequence of this is that
+several features of the communicative arrangements that are, I submit, key to
+understanding what we mean by representations---the sweet spots and bottlenecks
+of the title to this piece---are glossed over in those models. 
+
+In what follows I describe communication models in which the world that is
+represented consists on sets of properties---world states will consist on
+instantiations of properties in the set, and these instantiations will
+typically be probabilistically dependent on one another in various ways. In
+these models sender and receiver communicate over a channel that is not wide
+enough (i.e., has not enough *rate*) to communicate without residue everything
+that is the case in the world at any given time---there is a bottleneck, as
+there always is. There is a cost, usually called *distortion*, associated to
+the information that is lost in communication, and it is possible to calculate
+a *rate-distortion* function [@shannon_mathematical_1948; @shannon_coding_1959;
+@cover_elements_2006, ch. 10] that tells how much rate is necessary to achieve
+a certain level of distortion. The main claim of this paper is that much in our
+representation-attributing practices is sensitive to information structure that
+is glossed over in traditional Dretskean analyses, and brought out by
+rate-distortion analyses. More specifically: a first condition on messages in a
+sender-receiver arrangement to count as representations is that nhere be a
+rate-distortion *sweet spot* in the arrangement. a rate such that, once you
+reach it, increasing it brings much less reduction in distortion than it did
+before hitting the sweet spot. The sweet-spot rate offers an (objectively)
+optimal compromise between channel width and distortion.
+
+Now, the fact that the rate distortion curve shows sweet spots does not depend
+on the strategy by which the sender encodes its signal, or by how the receiver
+decodes it. It's a function of both the way the world is and of the distortion
+measure---which describes what it is that senders and receivers value, what it
+is more or less important for them not to miss about the world state. That is:
+the world and the interests of the agent jointly create a rate-distortion
+problem. It's still an open question whether sender and receiver are solving
+this problem optimally. The second condition on the presence of representations
+is precisely this: whether sender and receiver follow an encoding and decoding
+strategy that lands them at the rate-distortion sweet spot. When they do, their
+signaling behavior acts in effect as an efficient compression scheme of the
+world state. Furthermore, the encoding-decoding strategy at the sweet spot
+fixes how it is that signals *take* the world to be---what the content of those
+representations is.
+
+This was a very quick first pass on the ideas to be developed in what follows,
+but we can already see how the rate-distortion approach offers a variety of
+explanatory advantages as compared to other traditional information-theoretic
+approaches: 
+
+First, identifying representations with messages exchanged in the vicinity of a
+rate-distortion sweet spot has the consequence that representations are part of
+a very efficient, lossy compression scheme. This says much more than how the
+conditional probabilities of world states change with the tokening of messages
+(which is, at bottom, the piece of information Dretskean approaches focus on).
+It embeds this information on the wider context of the probabilistic structure
+of the environment where these representations happens, and of those aspects of
+the environment that are relevant to sender and receiver. These representations
+naturally accommodate misrepresentation.
+
+Second, it provides insight on which kinds of situations are most accommodating
+to the emergence of representations---it will turn out that at least one
+prominent situation in which rate-distortion sweet spots arise is when the
+world is populated by probabilistic structures of properties which can
+plausibly be taken to be natural kinds.
+
+Third, it offers an information-theoretic explanation of the popular idea that
+information-carrying states are only representations when they are produced in
+a variety of different circumstances (@burge_origins_2010's perceptual
+constancy and @sterelny_thought_2003's robust XXX are variations of the same
+idea) and when they are relevant to a range of different action plans or
+purposes [@sterelny_thought_2003's *broad-banded response*]. We will see that
+these conditions are just ways in which a rate-distortion sweet spot can be
+created.
+
+# Information in the Sender-Receiver Framework
+
+The topic of this paper is how representations are related to information. In
+recent philosophical discussions this question is usually (I'm tempted to say,
+universally) framed as the following two-step process: 
+
+Fixing Information: 
+
+: we first focus on a certain vehicle, M, and try to ascertain what states of
+affairs it carries information about---there will typically be a lot of
+those---and how to quantify this information.
+
+From Information to Content:
+
+: We then try to formulate additional conditions for one (or more) of these
+states of affairs to count as the content of M. Possibly, if it does not meet
+those additional conditions, we will conclude that M, even if it carries
+information about the world, is not a representation.
+
+The first step has given rise to a few different accounts of what it takes for
+vehicles such as M to carry information about the world. The common theme in
+these accounts is that a vehicle carrying information about a state of affairs
+corresponds to *ocurrences of the vehicle making a probabilistic difference to
+occurrences of the state* [@scarantino_information_2015;
+@stegmann_prospects_2015; @skyrms_signals_2010; @godfrey-smith_signals_2012;
+@shea_consumers_2007, the label is Scarantino's].^[Millikan's account in XXX is
+superficially non-probabilistic...] 
+
+To make this idea more precise, let me introduce a simple model of what a
+probablistic difference amounts to in this case: we introduce a *random
+variable*, S, that will encode the state of the world. For my current purposes,
+a random variable can be identified with a set of possible states for the
+variable to be in, $\{S_1, \dots, S_i, \dots, S_n\}$, together with the
+probabilities for each state $\{P_1, \dots, P_i, \dots, P_n\}$, where $P_i\geq
+0$ and $\sum_i P_i = 1$ [@mackay_information_2003, p. 34]. 
+
+We introduce another random variable for vehicles: there are, say, $m$ possible
+*messages* (that's the name I'll settle in for putatively representational
+vehicles) $\{M_1, \dots, M_i, \dots, M_m\}$, with probabilities $\{P_1, \dots,
+P_i, \dots, P_m\}$.  Now, in order to calculate whether a certain message $M_i$
+and a certain world state $S_j$ are independent we need to know their *joint
+probability*, $P(S=S_i; M=M_j)$. (For simplicity, from now on, instead of
+$P(S=S_i)$ I will just write $P(S_i)$, *mutatis mutandis* for all analogous
+expressions.) 
+
+We can give joint probabilities for every combination of message and state
+using an $n\times m$ matrix:
+
+$$\begin{bmatrix}
+    P(S_1; M_1) & \dots  & P(S_1; M_m) \\
+    \vdots & \ddots & \vdots \\
+    P(S_n; M_n) & \dots  & P(S_n; M_m)
+\end{bmatrix}$$
+
+The unconditional probabilities of states can be calculated by summing over
+rows: $P(S_i) = \sum_j P(S_i; M_j)$.[^1] Analogously, the unconditional
+probabilities of messages can be calculated by summing over columns: $P(M_i) =
+\sum_j P(S_j; M_i)$.  The probability of a certain state *conditional on* a
+certain message is calculated as follows:
+
+$$P(S_i | M_j) = P(S_i;M_j)/P(M_j)$$
+
+Now, the probabilistic-difference condition of information-carrying alluded to
+above can be given the following simple expression; a message $M_j$ makes a
+probabilistic difference to the instantiation of a state $S_i$ iff the
+following *basic inequality* holds: 
+
+$$P(S_i|M_j) \neq P(S_i)$$ 
+
+Nearly all the accounts of information developed in the recent philosophical
+literature on this topic are variations on, and attempts to quantify, this
+inequality. A few examples follow.^[In the examples I have modified notation to
+align it with the one I have been using. Some of the theories summarized below
+also introduce a term $k$ that stands for the knowledge state of the receiver
+of the message. This term makes no difference to the discussion that follows
+(except in the respect discussed in fn. XXX) and I will ignore it in what
+follows.]
+
+The foundational account of information in the philosophy of mind is
+@dretske_knowledge_1981. According to Dretske, a message $M$ carries the
+information that $S$ obtains iff $P(S|M) = 1 > P(S)$. That is, Dretske demands
+that the basic inequality holds and, moreover, that tokenings of $M$ make $S$
+certain. 
+
+Shea drops the certainty requirement: a message $M_j$ carries the correlational
+information that $S_i$ obtains iff $P(S_i|M_j) > P(S_i|\neg M_j)$. This
+condition is equivalent to the basic inequality, $P(S_i|M_j) > P(S_i)$
+[-@shea_consumers_2007, p. 421].[^not-by-chance] 
+
+In Skyrms [-@skyrms_signals_2010, p. 36] the "information in [$M_j$] in favor
+of [$S_i$]" is defined as the *pointwise mutual information* [pmi henceforth,
+references to this label] between state and message: $\log\frac{P(S_i |
+M_j)}{P(S_i)}$. The pmi is nonzero iff the basic inequality is true, but it
+also quantifies the amount of information (i.e., the distance between
+conditional and unconditional state probabilities) as the distance of the pmi
+from zero. 
+
+@godfrey-smith_signals_2011 points out that sometimes we are mainly interested,
+not in the difference of conditional and unconditional state probabilities, but
+in the actual probability of the state given that, as a matter of fact, the
+message has been produced. I.e., $P(S_i | M_j)$. 
+
+@scarantino_information_2015 calls this latter number the *degree of overall
+support*, and takes the ecumenical route of including both the pmi *and* the
+degree of overall support as the informational content of signals in his
+*probabilistic difference maker theory*  (*op. cit.* p. 429). 
+
+The running thread uniting these prominent contemporary accounts of
+information is that all there is to Shannon's information theory, at least for
+the purposes of investigating the nature of representation, is two quantities:
+the unconditional probability of states and the probability of states
+conditional on messages, perhaps rearranged as the logarithm of their ratio, or
+in some other way. It is not terribly surprising that it is routinely concluded
+that there is much more to representation than information: the above
+inequalities and quantities are commonly presented as signaling the presence
+of, or measuring, *natural* (sometimes, alternatively, *correlational*)
+information, and representation is taken to depend on (or perhaps be more or
+less coextensional with) the presence of *non-natural* information. 
+
+Having representational status is certainly not the same as carrying
+information, and representational content is certainly not the same as
+information. On the other hand, understanding information theory the way most
+philosophers currently do (i.e., as exhausted by answers to the question
+whether certain entities carry information about other entities; answers,
+moreover, that should be given in terms of something like the basic inequality)
+is unhelpful. There is much more to information theory that can be leveraged to
+improve our understanding of representations. 
+
+I will substantiate this claim in section 4 but, before that, I need to review
+some of the proposal that have been made as to ways to bridge the gap between
+information and representation. I will argue that most of these ways,
+apparently non information-theoretic, can in fact be fruitfully regarded as
+attempts to identify a cluster of yet more (Shannon) informational properties.
+
+# Bridging natural and nonnatural 
+
+A quick recap: most everyone agrees that information is important to
+representation but, the dominant understanding of information being what it is,
+most everyone agrees as well that information must be supplemented with
+extra-informational properties if it is to amount to representational content.
+There are a few reasons why information-carrying alone is usually deemed
+insufficient for representational status.
+
+First, it is sometimes assumed in philosophy that information, in the
+understanding spelled out in the previous section, must be always true. For
+example, @neander_mark_2017, p. 6, distinguishes information in a
+"natural-factive" sense from information in a "fully intentional" sense, and
+claims that "natural-factive information is factive because nothing can ...
+carry the information that some state of affairs, P, is the case, unless P is
+in fact the case" (*op. cit.*, p. 7)
+
+A dissenting voice here is @skyrms_signals_2010, ch. 3, who offers his notion
+of informational content, reviewed above, as "a generalization of standard
+philosophical notions of propositional content". Consider again the random
+variable, $S$, that represents the world. We can calculate the information that
+a certain message $M_i$ carries in favor of all world states $S_j$. This
+results in an *informational content* vector:
+
+$$\langle\log_2 p(S_1 | M_i) - \log_2 p(S_1), \ldots, \log_2 p(S_n | M_i) -
+\log_2 p(S_n)\rangle$$
+
+According to Skyrms, the standard philosophical notion of content should be
+identified with those world states $S_j$ which the message does not rule
+out---i.e., those for which $p(S_j | M_i) > 0$. This corresponds to
+non-infinite entries in the informational-content vector (because the logarithm
+of zero is minus infinity.) So, if the only states not ruled out by $M_i$ are,
+say, $S_1$ and $S_2$, then $M_i$ has the propositional content that $S_1$ or
+$S_2$ is the case. As @birch_propositional_2014 has pointed out, though, such
+Skyrmsian propositional contents have the fatal flaw that they cannot be false: 
+
+First, $S_j$ is part of the content of $M_i$ if and only if $M_i$ does not rule
+out $S_j$. 
+
+But $M_i$ will be false only if it is produced in a world state which is not
+part of its content. 
+
+So, for it to be false, it has to be produced in a state which it rules out,
+that is, a state $S_k$ such that $p(S_k | M_i) = 0$. A consequence of this is
+that, if $p(M_i) > 0$ (that is, if the message can be produced at all) then
+$p(M_i | S_k)$ is also zero.^[This is just an application of Bayes theorem:
+$p(A|B) = \frac{p(B|A)p(A)}{p(B)}$.] That is, it is impossible for the message
+to be produced in a state in which it would be false.
+
+Representational content, then, cannot be just a special case of informational
+content. There are a few proposals as to 
+
+The usual way to make this point is by appealing to Grice's
+[-@grice_meaning_1957, p. 378] distinction between "natural" and "nonnatural"
+meaning according to which, on the one hand, e.g., spots naturally-mean
+measles, and smoke naturally-means fire; and, on the other hand, e.g.,
+sentences nonnaturally-mean their content. 
+
+## Many to one to many
+
+The first proposal has to do with *architectural* constraints on 
+
+
+
+
+
+
+[^1]: That is, the unconditional probability of state $S_i$ is just the
+    probability that $S_i$ and $M_1$ jointly happen, or $S_i$ and $M_2$ jointly
+    happen, or... etc., for all messages. 
+    
+    Incidentally, unconditional probabilities are also called *marginal*
+    probabilities because they are (or were) usually written as the sum, at the
+    margin of the matrix.
+
+[^not-by-chance]: In many of the other proposals in this quick review, a
+not-by-chance condition is imposed on information. In Shea, for example, the
+inequality in the main text must hold "... for a common natural reason within
+some spatio-temporal domain D". In the models I will be discussing in the
+sequel part of this sort of condition is met by default: I, will be assuming an
+objective, broadly propensity-based understanding of probability statements:
+they are objective because they do not just record the epistemic state of an
+agent; and they are broadly propensity-based because they do not just summarize
+actual runs (in our case, in  actual rate of coincidence of message and state
+of affairs), but rather describe the tendency of that kind of situation to give
+rise to such frequencies, if repeated. As such, coincidence by chance is ruled
+out as not giving rise to the relevant kind of probabilistic connection. 
+
+    This takes care of the condition that there should be a reason for the
+    relevant inequality to hold (of course, assuming that a propensity-based
+    account of objective chances can be made to work.) But Shea claims that the
+    reason in question should be *one*. This is precisely the kind of condition
+    that can be investigated by using the probabilistic models of the world I
+    will favor in the sequel---although I will not discuss it in this paper.
+    For my current purposes, it will do simply to assume that the condition is
+    met. The problems I will identify with current accounts of information do
+    not depend on this.
+
+        
+# References {-}
+
