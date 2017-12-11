@@ -1,3 +1,15 @@
 Dretske has two goals for information: show how it can be quantified, and show
 how information can be at the basis of representations, knowledge, etc. (in the
 beginning there was information)
+
+Shannon: from "A" mathematical theory of communication to "The" mathematical
+theory of communication
+
+Kalkman -- Information, influence...
+    p. 6: "information is probably not something the organism itself thinks
+    about"
+
+    p. 20: "Receivers display plasticity in their responses to signals: they
+    are not necessarily subject to the whim of senders. Thus, ‘Information’
+    essentially becomes short-hand for a view of communication in which sender
+    influence is balanced by receiver flexibility." 
