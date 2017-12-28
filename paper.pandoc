@@ -115,10 +115,10 @@ plausibly be taken to be natural kinds.
 
 Third, it offers an information-theoretic explanation of the popular idea that
 information-carrying states are only representations when they are produced in
-a variety of different circumstances (@burge_origins_2010's perceptual
-constancy and @sterelny_thought_2003's robust XXX are variations of the same
+a variety of different circumstances (@burge_origins_2010-2's perceptual
+constancy and @sterelny_thought_2003-1's robust XXX are variations of the same
 idea) and when they are relevant to a range of different action plans or
-purposes [@sterelny_thought_2003's *broad-banded response*]. We will see that
+purposes [@sterelny_thought_2003-1's *broad-banded response*]. We will see that
 these conditions are just ways in which a rate-distortion sweet spot can be
 created.
 
@@ -146,7 +146,7 @@ vehicles such as M to carry information about the world. The common theme in
 these accounts is that a vehicle carrying information about a state of affairs
 corresponds to *ocurrences of the vehicle making a probabilistic difference to
 occurrences of the state* [@scarantino_information_2015;
-@stegmann_prospects_2015; @skyrms_signals_2010; @godfrey-smith_signals_2012;
+@stegmann_ulrich_prospects_2015; @skyrms_signals_2010; @godfrey-smith_signals_2012;
 @shea_consumers_2007, the label is Scarantino's].^[Millikan's account in XXX is
 superficially non-probabilistic...] 
 
@@ -289,7 +289,7 @@ out---i.e., those for which $p(S_j | M_i) > 0$. This corresponds to
 non-infinite entries in the informational-content vector (because the logarithm
 of zero is minus infinity.) So, if the only states not ruled out by $M_i$ are,
 say, $S_1$ and $S_2$, then $M_i$ has the propositional content that $S_1$ or
-$S_2$ is the case. As @birch_propositional_2014 has pointed out, though, such
+$S_2$ is the case. As @birch_propositional_2014-1 has pointed out, though, such
 Skyrmsian propositional contents have the fatal flaw that they cannot be false: 
 
 First, $S_j$ is part of the content of $M_i$ if and only if $M_i$ does not rule
@@ -319,25 +319,23 @@ that contemporary naturalistic metasemanticists see themselves as engaging in
 In what follows I will consider a couple of ideas which have been floated as to
 ways to construct nonnatural meanings out of natural ones. My aim is not to
 argue against them. I think they are on the right track. My claim will rather
-be that a better informed understanding of Shannon information provides a way
-to incorporating these insights in a purely informational account of
-representation.
+be that they fall out of a purely informational account of representation.
 
 ## Many-to-one-to-many Architectures
 
 The first proposal has to do with *architectural* constraints on
 representational vehicles. It is not enough that these vehicles carry
-information, in any of the closely related senses discussed above. On top of
-that, they must sit in the right place in a certain cognitive architecture.
-There are a few proposals along these lines. @sterelny_thought_2003, for
-example, has argued that talk of representations has a place only when the
-cognitive system that has them functionally distinguishes belief-like state
-from goal-like states---when representations are, in his favored teminology,
-*decoupled*. Sterelny suggests that decoupling is enabled by two prior
-evolutionary transitions: from "detection" to "robust tracking", on the one
-hand; and from "narrow-banded" to "broad-banded". Detection systems, for
-Sterelny, are just single-cued discriminatory mechanisms (p. 26): there is one
-single feature of the environment detection systems are attuned to, via a
+information, in any of the closely related senses discussed above. They must
+also sit in the right place in a certain cognitive architecture. There are a
+few proposals along these lines. @sterelny_thought_2003-1, for example, has
+argued that talk of representations is warranted only insofar as the
+purportedly intentional agent makes a functional distinction between
+belief-like state and goal-like states---when representations are, in his
+favored teminology, *decoupled*. Sterelny suggests that decoupling is enabled
+by two prior evolutionary transitions: from "detection" to "robust tracking",
+on the one hand; and from "narrow-banded" to "broad-banded". Detection systems,
+for Sterelny, are just single-cued discriminatory mechanisms (p. 26): there is
+one single feature of the environment detection systems are attuned to, via a
 single cue. Single-cue detection works very well when the environment is
 "transparent"---i.e., when it cooperates, there being high correlation between
 a property relevant to the agent's fitness and a cue the agent can detect.
