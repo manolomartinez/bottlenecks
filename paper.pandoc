@@ -21,7 +21,7 @@ information is *the* theory of information.
 
 I intend to make good on this last assertion by canvassing a fully (Shannon)
 informational derivation of the representational content of brain vehicles, in
-a certain paradigmatic situation. This description will show how a number of
+a certain paradigmatic case. This description will show how a number of
 apparently disparate threads in the literature on naturalistic metasemantics
 actually belong in the same coherent picture. Among these threads, first, the
 claim, advanced by Sterelny, Burge, and Rescorle among others that
@@ -585,15 +585,15 @@ particularly relevant, for our current purposes of illuminating the notion of
 representation: representations never are a lossless picture of what the world
 looks like when the representation is produced. Consider, for example, animal
 alarm calls. Vervet monkeys, for example are typically described as being able
-to produce three different, discrete kinds of calls
-[@SeyfarthMonkeyresponsesthree1980; @SeyfarthVervetmonkeyalarm1980], that are
-typically taken to be associated with the presence of leopards, eagles and
-snakes respectively (or predators who are similar to these three.) Obviously,
-the entropy of the environment that prompts the production of a call vastly
-outstrips the rate of a channel which consists in the production of just one
-out of three possible signals. This means, as per the source coding theorem,
-that loss in communication is inevitable. Alarm calls are all about *lossy
-transmission*.
+to produce three different, discrete kinds of calls^[Or perhaps four. See
+@PriceDeterminateFunctions1998.] [@SeyfarthMonkeyresponsesthree1980;
+@SeyfarthVervetmonkeyalarm1980], that are typically taken to be associated with
+the presence of leopards, eagles and snakes respectively (or predators which
+are similar to these three.) Obviously, the entropy of the environment that
+prompts the production of a call vastly outstrips the rate of a channel which
+consists in the production of just one out of three possible signals. This
+means, as per the source coding theorem, that loss in communication is
+inevitable. Alarm calls are all about *lossy transmission*.
 
 The way in which information theory deals with lossy transmission is by
 defining a *distortion measure* [@CoverElementsInformationTheory2006, p. 304]
@@ -827,7 +827,7 @@ I turn now to showing how the ways to bridge the gap between natural and
 non-natural information discussed in ssection 3 can be seen as unwitting
 attempts to get at rate-distortion sweet spots.
 
-# Bridging Again
+# Bridging Gaps Again
 
 I have suggested above that the status of signals in an information processing
 pipeline as representations or not is sensitive to at least two
@@ -852,18 +852,166 @@ departures makes the extra rate comparatively less useful.
 
 Noisy replication of property instantiations is at the core of the homeostatic
 property cluster theory of natural kinds, as we saw above.^[[redacted 1] and
-[redacted 2] offer more detailed exploration of the connections of information
-theory and HPCs.] This means that, in general, the presence of HPC natural
-kinds in a source will create sweet spots. This opens the possibility for
-arguing in favor of reference magnetism from information-theoretic premises.
-Lewis and Sider (and Artiga, Martínez, and Ryder)  are not pulling a rabbit out
-of the hat by insisting that 
+[redacted 2] are more detailed explorations of the connections between
+information theory and the metaphysics of natural kinds.] This means that, in
+general, the presence of HPC natural kinds in a source will create sweet spots.
+This opens a line of argument in favor of reference magnetism from
+information-theoretic premises. Lewis and Sider (also Artiga, Martínez, and
+Ryder) are not pulling a rabbit out of the hat by insisting that natural, or
+real, entities are worthier referents than unnatural ones. They should be seen
+as making a point about the kind of probabilistic structure that an
+information-processing pipeline must be attuned to, if signals are to effect
+the kind of optimal lossy compression that underlies our
+representation-attributing practices.
 
-A rate distortion curve is defined by just two properties of the
+Regarding the suggestion, by Sterelny, Burge and others, that representations
+inhere preferably on signals sitting in a one-to-many-to-one pipeline, I now
+show that the many-to-one aspect of this suggestion aims at meeting the
+optimality condition; the one-to-many aspect, together with reference
+magnetism, aims at meeting the existence condition. 
+
+The first thing to note here is that the *Optimal Encoding Strategy* presented
+above enforces what Sterelny calls robust tracking and Burge calls constancy:
+the strategy consists in considering *all* properties coming from each of the
+two clusters and setting the relevant bit to 1 only if a majority of those
+properties are tokened. That is the encoder is taking a multiplicity of
+configurations (e.g., the first half of the incoming message being 00111,
+01011, 10111, etc.) to a single output: the first bit of the signal being 1.
+Furthermore, that part of the signal will be decoded as 11111: from there on,
+the system downstream will treat whatever is out there in the world as a
+paradigmatic member of the first kind. That is, the systems is recovering the
+presence of a natural kind out of many different, noisy instantiation patterns.
+This is a clear instance of robust tracking / constancy. It is, moreover,
+instrumental in meeting the optimality condition. Suppose that the encoder
+depended on a single cue so that it set the first bit to 1 if one of the
+children properties (say, $P_2$) was instantiated, and to 0 otherwise. In such
+a cue-driven setup, the best encoder-decoder arrangement possible is marked by
+the blue circle in Fig. 6. This is much worse than the optimal encoding (marked
+by the blue cross) which sits right on top of the optimal rate distortion
+curve. A many-to-one architecture, then, is not just an extra-informational
+ingredient to an account of representation, as the theorists discussed in
+section 3 assume. It is integral to meeting the (purely informational)
+optimality condition.
+
+
+![Cue-driven
+encoding](/home/manolo/Models/rate_distortion_signaling/two_essence_kinds_rd_with_child_and_optimal.pdf)
+
+Finally, a rate distortion curve is defined by just two properties of the
 information-processing system: on the one hand, the probabilistic structure of
-the source; on the other hand, the target distortion measure. 
+the source (which, I have been arguing, is what reference-magnetism conditions
+are actually getting at); on the other hand, the target distortion measure.
+This latter ingredient can be seen as that which one-to-many conditions on
+representation are actually tracking. The distortion measure I have been using
+in the two natural kinds model is a Hamming distance over the whole message.
+Using this measure is tantamount to assuming that all of the properties of the
+natural kinds are relevant for downstream processing. One natural way in which
+this may happen is when the agent where the information processing happens is
+to response flexibly to the presence of the natural kind: in different contexts
+or states different properties of the kind might be relevant and, for example,
+the presence of a tree might be sometimes relevant to behavior because it bears
+fruit (if the agent is hungry) and some other times because it has a dense
+cover (if the agent is looking for shelter.)
+
+Caring about all (or many) properties of the kind is what makes the rate
+distortion curve display a sweet spot. If, instead, the agent has a rigid,
+stereotyped response to the presence of members of the kinds---that is, if it
+only cares about the presence of one property in each kind, which is the
+property that makes that rigid behavioral response fitness-conducive, then the
+curve is as presented in Fig. 7.
+
+![Rigid behavioral
+response](/home/manolo/Models/rate_distortion_signaling/two_essence_simple_rd.pdf)
+
+That is, rigid behavioral responses (modeled here as a distortion measure that
+only cares about the properties that make the behavior in question
+fitness-conducive) turn the probabilistic structure of the kinds largely
+irrelevant. As a result, the system behaves as if two coins were tossed, one
+for each kind, where heands would mean that the target property is tokened, and
+tails that it is not. This arrangement does not meet the existence condition.
+Sterelny's broad-banded responses are, again, a way of getting at rate
+distortion sweet spots.
+
+# Biological Plausibility of the Model
+
+This approach to representation is less minimalistic than the Dretskean one, at
+least in that it postulates an information-processing pipeline that includes an
+encoding and a decoding stage, as opposed to a simple relation between a signal
+and the state of affairs it carries information about. How biologically
+realistic is a model, say, of animal communication or mental representation,
+with these features? First, it is important not to read much into "encoder" and
+"decoder"; these processing stages are individuated by their causal profile,
+which might be extremely simple. In the model with two natural kinds that has
+served as my main example, the optimal encoding strategy (described in section
+4) has a very simple causal profile, as does the optimal decoding strategy. 
+
+It is easy to describe real-world situations where encoding-decoding models
+apply directly. One was introduced above: vervet monkeys use a number of
+perceptual cues to produce one of a discrete repertory of signals in the
+presence of predators, which are then used to produce behavior that is relevant
+to the presence of the predator in question [@SeyfarthMonkeyresponsesthree1980;
+@SeyfarthVervetmonkeyalarm1980]. The rate-distortion way to think of this
+communication setup goes as follows. The impact that predators have on fitness
+fixes the relevant distortion measure. Here, the properties relevant for the
+encoding stage and for the decoding stage need not be the same: the former will
+be detectable properties of the sort vervet monkeys use to recognize the
+presence of one or another predator (presumably, shape, color, motion patterns,
+etc.), while the latter will be related to what makes the behavior produced by
+the signal fitness-conducive; presumably, those related to the dangerousness of
+the predator, how hungry, and how fit they are. Of course, these encoding and
+decoding strategies should be ascertained empirically, and much of the research
+done on this problem may be seen as doing precisely this. What primatologists
+are tacitly doing, I suggest, is assume that this encoding-decoding strategy
+meets the existence and optimality conditions, and work out what is the
+relevant probabilistic structure of the environment, so that it creates a sweet
+spot for the alarm calls to sit in. The sweet spot is there: three kinds of
+predator induce a probabilistic structure similar to that of Fig. 4, and the
+distortion measure does the rest. The usual claim as to the content of these
+signals (i.e., that they communicate presence of leopards, eagles and snakes)
+follows from this identification of the relevant probabilistic structure of the
+source.
+
+Recently, moreover, explicit appeals to similar information-theoretic ideas
+have started to appear in the empirical literature, for related purposes. For
+example, in an influential, recent series of papers, Naftali Tishby and
+colleagues [@TishbyDeeplearninginformation2015;
+@Shwartz-ZivOpeningBlackBox2017] have proposed using the so-called *Information
+Bottleneck method* [@Tishbyinformationbottleneckmethod2000], an application of
+rate-distortion theory to information divergence as the target distortion
+measure [@Harremoesinformationbottleneckrevisited2007, p. 1], in the
+investigation of deep neural networks [DNNs]. One of the suggestions coming
+from this body of research is that "the goal of [DNNs] is to optimize the
+Information Bottleneck tradeoff between compression and prediction". While the
+details of this account, and its aims, are very different (and, in particular,
+the question of what counts as a representation, and what the content of
+representations should be, is not posed), the idea that DNNs aim at trading off
+compression (and, thus, rate) and prediction (which is intimately related to
+distortion) is clearly congenial to the ideas I have been developing here. 
+
+In general, thinking of representational status as related to sweet spots in
+the rate-distortion trade off makes them fall under the very successful
+*computational rationality* paradigm in cognitive science, according to which
+cognition is mostly about "identifying decisions with highest expected utility,
+while taking into consideration the costs of computation"
+[@GershmanComputationalrationalityconverging2015, p. 273.]
 
 
+# Concluding Remarks
+
+Shannon's information theory offer an expressive formalism, together with a
+series of results that are of the utmost relevance to the investigation of
+representations and intentionality. 
+
+In particular, I have argued here that rate-distortion theory helps uncover at
+least part of the structure that makes representations explanatory: they would
+be, if I am right, signals that sit close to a rate-distortion sweet spot. This
+brings together a range of apparently unrelated moves in the naturalization of
+intentionality program under a unified, illuminating framework. This framework
+is not something that philosophers working in the Dretskean informational
+tradition could have easily formulated: the information-theoretic resources
+that have typically been deployed in this tradition do not include the latter
+stages in the information-processing pipeline (see the difference between Figs.
+1 and 2) that are central to describing things the rate-distortion way.
 
 # References {-}
 
