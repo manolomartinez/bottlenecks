@@ -1,178 +1,167 @@
-% Representations as Rate-Distortion Sweet Spots
+% Representations are Rate-Distortion Sweet Spots
 
 # Introduction
 
 Claude E. Shannon's "A Mathematical Theory of Communication", the astonishing
-paper in which he lays the foundations of information theory, was first
+paper in which the foundations of information theory are laid, was first
 published in 1948, and subsequently republished in book form in 1949 as "The
 Mathematical Theory of Communication". In their foreword to the 50th
-anniversary edition of this book Blahut and Hajek remark that this change in
-title is "both trivial and profound" [@ShannonMathematicalTheoryCommunication1998, p. vii]. It
-is profound indeed: in one year it had become apparent to Shannon that his was
-not just a possible theoretical approach but, quite simply, *the* theory of
-information.
+anniversary edition of this book Richard Blahut and Bruce Hajek remark that
+this change in title is "both trivial and profound"
+[@ShannonMathematicalTheoryCommunication1998, p. vii]: in one year it had
+become apparent to Shannon that his was not just a possible theoretical
+approach but, quite simply, *the* theory of information.
 
-The study of information is essential to a number of philosophical programs. In
-particular, unsurprisingly, it is widely seen as essential to the study of
-communication and mental representation. Yet philosophers working on these
-programs often take themswelves not to be centrally concerned with "Shannon
-information", as it is often put. This perception is wrong. Shannon's theory of
-information is *the* theory of information. 
+The study of information is central to a number of philosophical pursuits. In
+particular, it is widely seen as essential to the study of communication and
+mental representation. Yet philosophers working on these programs often take
+themswelves not to be centrally concerned with "Shannon information", as it is
+often put, but with some other, sometimes called "semantic" or "nonnatural",
+kind of information. This perception is wrong. Shannon's theory of information
+is the only one we need. I intend to make good on this last assertion by
+canvassing a fully (Shannon) informational answer to the metasemantic question
+of what makes a vehicle a representation, for a certain important family of
+cases. This answer, and the resulting theory, will show how a number of threads
+in the literature on naturalistic metasemantics, aimed at describing the
+purportedly non-informational ingredients in representation, actually belong in
+the same coherent, purely information-theoretic picture. 
 
-I intend to make good on this last assertion by canvassing a fully (Shannon)
-informational derivation of the representational content of brain vehicles, in
-a certain paradigmatic case. This description will show how a number of
-apparently disparate threads in the literature on naturalistic metasemantics
-actually belong in the same coherent picture. Among these threads, first, the
-claim, advanced by Sterelny, Burge, and Rescorle among others that
-representation is to be distinguished from mere information transduction by the
-former holding a many-to-one relation to inputs, and a one-to-many relation to
-outputs (in a sense to be explained below). A second thread is the claim that
-natural kinds, and other "reference magnets"  are by-default preferable as
-candidates to figure in the content of simple representations (Sterelny, Lewis,
-Sider). A third thread is the supposed inability of informational accounts to
-account for misrepresentation, and therefore the supposed need to distinguish
-between natural and non-natural information (Scarantino, Birch, Neander). In
-all three threads the transition from mere information processing to
-representation is thought to be mediated by the addition of further conditions:
-architectural constraints in the first thread; metaphysical constraints on the
-represented world, in the second thread; combination of different,
-extra-informational solutions have been tried for the third. In what follows I
-show that these different extra-informational ideas in fact fall out of a
-sufficiently expressive information-theoretic description model of
-representation. 
+Most philosophical uses of information theory in metasemantics depend on
+Dretske's groundbreaking, immensely influential
+[-@DretskeKnowledgeFlowInformation1981] presentation, and as result, understand
+the theory and its import for metasemantics in a similar way, and simplify
+information-theoretic models in the same key respects. Dretske viewed
+information-carrying as a relation between a worldly state of affairs and a
+signal. That is, he quite consciously  ignored the central components in
+Shannon's information-processing pipeline: first, an encoder that takes a
+worldly state of affairs and produces a signal; second, a channel through which
+the signal must pass; finally, a decoder that must recover which state of
+affairs it was from this signal. The consequence of this neglect is that
+several properties of the communicative arrangements that are, I submit, key to
+understanding what we mean by representations---all of them related to the
+sweet spots alluded to in the title to this piece---are ignored in the
+Dretskean tradition.^[Dretske had very good reasons to make the theoretical
+choices he made in Knowledge and the Flow of Information, of course. While I
+will argue that they were, after all, the wrong choices, this in no way
+detracts from the immense importance of Dretske's contribution to my topic.]
 
-Most (I am tempted to say, all)  philosophical discussion of
-information-theoretic ideas is a reaction to two seminal bodies of work. On the
-one hand Dretske's [-@DretskeKnowledgelowInformation1981] and
-[-@DretskeExplainingBehaviorReasons1988] presentations. On the other hand,
-Brian Skyrms' evolutionary game-theoretic *sender-receiver models*
-[-@SkyrmsSignalsEvolutionLearning2010]. Both traditions simplify
-information-theoretic models in the same key respects. They model the world as
-a set of mutually exclusive, jointly exhaustive states. This makes the models
-oblivious to the *internal structure* of world states, how property
-instantiations in these states are related with one another, and with what
-happens when the world is in other states. The consequence of this is that
-several features of the communicative arrangements that are, I submit, key to
-understanding what we mean by representations---the sweet spots and bottlenecks
-of the title to this piece---are glossed over in those models. 
-
-In what follows I describe communication models in which the world that is
-represented consists on sets of properties---world states will consist on
-instantiations of properties in the set, and these instantiations will
-typically be probabilistically dependent on one another in various ways. In
-these models sender and receiver communicate over a channel that is not wide
-enough (i.e., has not enough *rate*) to communicate without residue everything
-that is the case in the world at any given time---there is a bottleneck, as
-there always is. There is a cost, usually called *distortion*, associated to
-the information that is lost in communication, and it is possible to calculate
-a *rate-distortion* function [@ShannonMathematicalTheoryCommunication1948;
+In what follows I describe communication models in which an encoder and decoder
+communicate over a channel. Depending on how wide the channel is (depending on
+its *rate*) they will be able to communicate more, or less, of what is and is
+not the case in the world at any given time. Whenever the channel rate is not
+sufficient to communicate all that would be desirable, there is a cost, a
+*distortion*, associated to the information that is lost in communication. One
+central result in information theory is that it is possible to calculate a
+*rate-distortion* function [@ShannonMathematicalTheoryCommunication1948;
 @ShannonCodingtheoremsdiscrete1959; @CoverElementsInformationTheory2006, ch.
-10] that tells how much rate is necessary to achieve a certain level of
-distortion. The main claim of this paper is that much in our
-representation-attributing practices is sensitive to information structure that
-is glossed over in traditional Dretskean analyses, and brought out by
-rate-distortion analyses. More specifically: a first condition on messages in a
-sender-receiver arrangement to count as representations is that nhere be a
-rate-distortion *sweet spot* in the arrangement. a rate such that, once you
-reach it, increasing it brings much less reduction in distortion than it did
-before hitting the sweet spot. The sweet-spot rate offers an (objectively)
-optimal compromise between channel width and distortion.
+10] that gives the minimum rate necessary to achieve any expected level of
+distortion. The main claim I make in this paper is that much in our
+representation-attributing practices are sensitive to informational structure
+that is brought out by rate-distortion analyses---and glossed over in
+traditional Dretskean analyses. 
 
-Now, the fact that the rate distortion curve shows sweet spots does not depend
-on the strategy by which the sender encodes its signal, or by how the receiver
-decodes it. It's a function of both the way the world is and of the distortion
-measure---which describes what it is that senders and receivers value, what it
-is more or less important for them not to miss about the world state. That is:
-the world and the interests of the agent jointly create a rate-distortion
-problem. It's still an open question whether sender and receiver are solving
-this problem optimally. The second condition on the presence of representations
-is precisely this: whether sender and receiver follow an encoding and decoding
-strategy that lands them at the rate-distortion sweet spot. When they do, their
-signaling behavior acts in effect as an efficient compression scheme of the
-world state. Furthermore, the encoding-decoding strategy at the sweet spot
-fixes how it is that signals *take* the world to be---what the content of those
-representations is.
+More specifically: a first *existence* condition for signals in an
+information-processing pipeline to count as representations is that there be a
+rate-distortion *sweet spot*: a rate such that, once you reach it, increasing
+rate brings much less reduction in distortion than it did before reaching it.
+That is, there is a sharp drop in the slope of the rate-distortion curve at
+this point. As a consequence, the sweet spot offers an (objectively) optimal
+compromise between channel rate and distortion. Once the presence of a
+rate-distortion sweet spot has been established it is still an open question
+whether encoder and decoder are exploiting it. The second *optimality*
+condition is precisely this: that the encoding and decoding strategies sit at,
+or near to, a rate-distortion sweet spot.
 
-This was a very quick first pass on the ideas to be developed in what follows,
-but we can already see how the rate-distortion approach offers a variety of
-explanatory advantages as compared to other traditional information-theoretic
-approaches: 
+In section 2 I introduce a few concepts necessary to understading information
+in what I have called the Dretskean tradition. I will review a few prominent
+contemporary accounts in this tradition, and show that all of them treat
+information as what @ScarantinoInformationprobabilisticdifference2015 calls a
+*probabilistic difference maker*. This, I have sxuggested, is an impoverished
+understanding of information, and it's therefore entirely natural for theorists
+that adhere to it and are interested in the relation that information bears to
+representation to look elsewhere for ways to supplement the former in their
+account of the latter. 
 
-First, identifying representations with messages exchanged in the vicinity of a
-rate-distortion sweet spot has the consequence that representations are part of
-a very efficient, lossy compression scheme. This says much more than how the
-conditional probabilities of world states change with the tokening of messages
-(which is, at bottom, the piece of information Dretskean approaches focus on).
-It embeds this information on the wider context of the probabilistic structure
-of the environment where these representations happens, and of those aspects of
-the environment that are relevant to sender and receiver. These representations
-naturally accommodate misrepresentation.
+In section 3 I review two of the main ways that have been proposed to bridge
+the gap between information and representation. First, the claim, advanced by
+@SterelnyThoughtHostileWorld2003 and @BurgeOriginsobjectivity2010 among others,
+that representation is to be distinguished from mere information processing by
+the former holding a many-to-one relation to inputs, and a one-to-many relation
+to outputs, in a sense to be explained below. Second, the claim that natural
+kinds, and other "reference magnets" [@LewisNewworktheory1983;
+@LewisPutnamparadox1984; @SiderWritingBookWorld2014] are preferable as
+candidates to figure in the content of representations
+[@ArtigaBlackSpotsNutritiousforthcoming; @MartinezTeleosemanticsIndeterminacy2013;
+@RyderSINBADNeurosemanticsTheory2004; @RyderThinkingKinds2006.] 
 
-Second, it provides insight on which kinds of situations are most accommodating
-to the emergence of representations---it will turn out that at least one
-prominent situation in which rate-distortion sweet spots arise is when the
-world is populated by probabilistic structures of properties which can
-plausibly be taken to be natural kinds.
+Section 4, the central section of this article, introduces rate-distortion
+theory and defends rate-distortion sweet spots as a much more central
+information-theoretic construct for our understanding of representation than
+the Dretskean definitions in section 2. In particular, in section 5 I show how
+the rate-distortion approach accommodates misrepresentation, and in section 6 I
+show how the apparently non-informational ideas reviewed in section 3 in fact
+fall out naturally of this rate-distortion approach. Finally, section 7 offers
+a few concluding remarks.
 
-Third, it offers an information-theoretic explanation of the popular idea that
-information-carrying states are only representations when they are produced in
-a variety of different circumstances (@BurgeOriginsobjectivity2010's perceptual
-constancy and @SterelnyThoughtHostileWorld2003's robust XXX are variations of
-the same idea) and when they are relevant to a range of different action plans
-or purposes [@SterelnyBasicMinds1995's *broad-banded response*]. We will see
-that these conditions are just ways in which a rate-distortion sweet spot can
-be created.
-
-# Information in the Sender-Receiver Framework
+# Information, Shannonian and Dretskean
 
 The topic of this paper is how representations are related to information. In
 recent philosophical discussions this question is usually (I'm tempted to say,
-universally) framed as the following two-step process: 
+universally) framed as the following two-step process: we first focus on a
+certain signal, $M$, and try to ascertain what states of affairs it carries
+information about---there will typically be a lot of those---and how to
+quantify this information. Then, we try to formulate additional conditions for
+one (or more) of these states of affairs to count as the content of $M$.
+Possibly, if it does not meet those additional conditions, we will conclude
+that $M$, even if it carries information about the world, is not a
+representation.
 
-Fixing Information: 
-
-: we first focus on a certain vehicle, M, and try to ascertain what states of
-affairs it carries information about---there will typically be a lot of
-those---and how to quantify this information.
-
-From Information to Content:
-
-: We then try to formulate additional conditions for one (or more) of these
-states of affairs to count as the content of M. Possibly, if it does not meet
-those additional conditions, we will conclude that M, even if it carries
-information about the world, is not a representation.
-
-The first step has given rise to a few different accounts of what it takes for
-vehicles such as M to carry information about the world. The common theme in
-these accounts is that a vehicle carrying information about a state of affairs
-corresponds to *ocurrences of the vehicle making a probabilistic difference to
-occurrences of the state* [@ScarantinoInformationprobabilisticdifference2015;
+The first step in this process has given rise to a number of accounts of what
+it takes for signal such as $M$ to carry information about the world. The
+common theme in these accounts is that a signal carrying information about a
+state of affairs corresponds to *ocurrences of the signal making a
+probabilistic difference to occurrences of the state*
+[@ScarantinoInformationprobabilisticdifference2015;
 @StegmannUlrichProspectsProbabilisticTheories2015;
 @SkyrmsSignalsEvolutionLearning2010;
-@Godfrey-SmithSignalsEvolutionLearning2011; @SheaConsumersNeedInformation2007,
-the label is Scarantino's].^[Millikan's account in XXX is superficially
-non-probabilistic...] 
+@Godfrey-SmithSignalsEvolutionLearning2011;
+@SheaConsumersNeedInformation2007].[^Millikan-probabilities]
+
+[^Millikan-probabilities]: Millikan's account of natural information [the most
+recent version is in her -@MillikanConceptsUniceptsLanguage2017] is presented
+in non-probabilistic terms. The reason is that Millikan believes there is an
+"obdurate problem of defining, in a principled way, the reference class within
+which [the relevant] probabilities must hold." (*op. cit.*, p. 137)
+
+    I do not discuss, or attempt to rebut, Millikan's scepticism about
+    probabilities here. I simply assume, both with the scientists to whose
+    practices a naturalistic metasemantics is supposed to apply, and with most
+    other philosophers working on these issues, that the relevant objective
+    probabilities are well defined. 
+    
+    This important *caveat* aside, I believe that Millikan's account of natural
+    information is very much of a kind with the broadly Dretskean probabilistic
+    proposals I discuss in the main text.
 
 To make this idea more precise, let me introduce a simple model of what a
-probablistic difference amounts to in this case: we introduce a *random
-variable*, S, that will encode the state of the world. For my current purposes,
-a random variable can be identified with a set of possible states for the
+probablistic difference amounts to in this case: first, I use a *random
+variable*, $S$, to encode the state the world is in. For my current purposes, a
+random variable can be identified with a set of possible states for the
 variable to be in, $\{S_1, \dots, S_i, \dots, S_n\}$, together with the
-probabilities for each state $\{P_1, \dots, P_i, \dots, P_n\}$, where $P_i\geq
-0$ and $\sum_i P_i = 1$ [@MacKayInformationtheoryinference2003, p. 34]. 
+probabilities for each state $\{P(S_1), \dots, P(S_n)\}$, where $P(S_i)\geq
+0$ and $\sum_i P(S_i) = 1$ [@MacKayInformationtheoryinference2003, p. 34]. I
+introduce another random variable, $M$, for signals: there are, say, $m$
+possible signals in the putative representation system we are studying, $\{M_1,
+\dots, M_i, \dots, M_m\}$, with probabilities $\{P(M_1), \dots, P(M_m)\}$.  
 
-We introduce another random variable for vehicles: there are, say, $m$ possible
-*messages* (that's the name I'll settle in for putatively representational
-vehicles) $\{M_1, \dots, M_i, \dots, M_m\}$, with probabilities $\{P_1, \dots,
-P_i, \dots, P_m\}$.  Now, in order to calculate whether a certain message $M_i$
-and a certain world state $S_j$ are independent we need to know their *joint
-probability*, $P(S=S_i; M=M_j)$. (For simplicity, from now on, instead of
-$P(S=S_i)$ I will just write $P(S_i)$, *mutatis mutandis* for all analogous
-expressions.) 
-
-We can give joint probabilities for every combination of message and state
-using an $n\times m$ matrix:
+In fact, given that we are primarily interested in calculating whether signals
+and world states are probabilistically dependent on one another, information
+about the probabiities associated with these two random variables will come in
+the form of *joint probabilities* such as, e.g., that of state $S_i$ and signal
+$M_j$ being coinstantiated: $P(S=S_i; M=M_j)$. (For simplicity, from now on,
+instead of $P(S=S_i)$ I will just write $P(S_i)$, *mutatis mutandis* for all
+analogous expressions.) We can give joint probabilities for every combination
+of signal and state using an $n\times m$ matrix:
 
 $$\begin{bmatrix}
     P(S_1; M_1) & \dots  & P(S_1; M_m) \\
@@ -180,222 +169,283 @@ $$\begin{bmatrix}
     P(S_n; M_n) & \dots  & P(S_n; M_m)
 \end{bmatrix}$$
 
-The unconditional probabilities of states can be calculated by summing over
-rows: $P(S_i) = \sum_j P(S_i; M_j)$.[^unconditional] Analogously, the
-unconditional probabilities of messages can be calculated by summing over
-columns: $P(M_i) = \sum_j P(S_j; M_i)$.  The probability of a certain state
-*conditional on* a certain message is calculated as follows:
+From this matrix, the unconditional probabilities of states can be calculated
+by summing over rows: $P(S_i) = \sum_j P(S_i; M_j)$.[^unconditional]
+Analogously, the unconditional probabilities of signals can be calculated by
+summing over columns: $P(M_i) = \sum_j P(S_j; M_i)$.  The probability of a
+certain state *conditional on* a certain signal is calculated as follows:
 
 $$P(S_i | M_j) = P(S_i;M_j)/P(M_j)$$
 
 [^unconditional]: That is, the unconditional probability of state $S_i$ is just
 the probability that $S_i$ and $M_1$ jointly happen, or $S_i$ and $M_2$ jointly
-happen, or... etc., for all messages. 
+happen, or... etc., for all signals. 
     
     Incidentally, unconditional probabilities are also called *marginal*
     probabilities because they are (or were) usually written as the sum, at the
     margin of the matrix.
 
-Now, the probabilistic-difference condition of information-carrying alluded to
-above can be given the following simple expression; a message $M_j$ makes a
-probabilistic difference to the instantiation of a state $S_i$ iff the
-following *basic inequality* holds: 
+The most basic quantities with which information theory records the dependence
+of random variables onto one another are the (unconditional) *entropy* of a
+random variable, and the entropy of a random variable *conditional* on another.
+From these two quantities the *mutual information* between two random variables
+is readily calculated.
+
+The entropy, $H(S)$,  of a random variable, $S$, provides a meaure of the
+richness of the random variable---a measure, that is, of how much one needs to
+know about $S$ to characterize its current state in full. $H(S)$ can be thought
+of as the number of yes/no questions that must be asked in order to know which
+state $S_i$ is actual:
+
+$$H(S) = -\sum_i P(S_i)\log(P(S_i))$$
+
+The logarithm in the formula above is typically, but not necessarily, in base
+2, in which case the entropy is calculated in *bits*.^[The informal gloss in
+terms of yes/no questions only works if the entropy is measured in bits. If it
+is measured in "trits" (i.e., if the logarithm is in base 3) then the questions
+should be thought of as having three possible answers. *Mutatis mutandis* for
+other values of the base.] For a quick example, suppose that the random
+variable $S$ whose associated entropy we wish to calculate models tosses of a
+fair coin. That is, we assume that $S$ has two possible states, *heads* and
+*tails*, such that their associated probabilities are $P_{heads} = P_{tails} =
+0.5$ (I will omit the 0 to the left of the decimal point in what follows.)
+Applying the formula above, the entropy of this random variable is, simply,
+$H(S) = -(\frac{1}{2}\log\frac{1}{2} + \frac{1}{2}\log\frac{1}{2}) = 1$ bit.
+That is, it is enough to ask *one* yes/no question to know which state the
+random variable is in---for example, *Did the coin land heads?*
+
+The entropy of a random variable, $S$ conditional on another random variable
+$M$ is calculated as the weighted average of the entropy of $S$ given that a
+certain value of $M$ is actual, for all values of $M$: 
+
+$$H(S | M) = -\sum_i P(M_i)H(S | M=M_i)$$
+
+The idea here is that, because $S$ is potentially dependent on $M$, $H(S)$
+might change as the actual value of $M$ changes. The conditional entropy is the
+expected value of the entropy of $S$ for the different values that $M$ can
+take. 
+
+Finally the *mutual information* between $S$ and $M$, $I(S;M)$, is the full
+entropy of $S$ minus the remaining entropy $S$ has conditional on $M$. That is,
+it gives the expected reduction in entropy for $S$ given knowledge of the state
+of $M$.^[And vice versa: mutual information is symmetrical.]
+
+$$I(S;M) = H(S) - H(S|M)$$
+
+These information-theoretic quantities are, all of them, averages.
+@DretskeKnowledgeFlowInformation1981, p. 52f, claims that this makes them
+unsuitable for an analysis of the representational status of individual
+signals, and that they must be substituted by notions that record relations
+between individual states, $S_i$, and individual signals, $M_j$.^[Dretske also
+claims that using surprisal and pointwise mutual information [the quantities
+introduced in equations 2.1 and 2.2 in @DretskeKnowledgeFlowInformation1981, p.
+52] for the purposes of defining "the amount of information associated with
+particular events and signals ... is foreign to ... orthodox uses of these
+formulas" (*ibid.*). In fact, surprisals had been used for precisely this
+purpose, at least in chemical physics, throughout the 70s. An early review is
+@LevineEnergydisposalenergy1974.] This claim is accepted by contemporary
+Dretskeans. The basic relation which substitutes mutual information in their
+accounts, as I advanced above, is that of *making a probabilistic difference*;
+the idea being that a signal $M_j$ makes a probabilistic difference to the
+instantiation of a state $S_i$ iff the following *basic inequality* holds: 
 
 $$P(S_i|M_j) \neq P(S_i)$$ 
 
-Nearly all the accounts of information developed in the recent philosophical
-literature on this topic are variations on, and attempts to quantify, this
-inequality. A few examples follow.^[In the examples I have modified notation to
-align it with the one I have been using. Some of the theories summarized below
-also introduce a term $k$ that stands for the knowledge state of the receiver
-of the message. This term makes no difference to the discussion that follows
-(except in the respect discussed in fn. XXX) and I will ignore it in what
-follows.]
+Nearly all the accounts of information developed in the recent, and not so
+recent, philosophical literature on this topic are variations on, and attempts
+to quantify, this inequality, as I now show.
 
 The foundational account of information in the philosophy of mind is
-@DretskeKnowledgelowInformation1981. According to Dretske, a message $M$ carries the
-information that $S$ obtains iff $P(S|M) = 1 > P(S)$. That is, Dretske demands
-that the basic inequality holds and, moreover, that tokenings of $M$ make $S$
-certain. 
+@DretskeKnowledgeFlowInformation1981: "A signal *r* carries the information that
+*s* is *F* = The conditional probability of *s*'s being F, given *r* (and *k*),
+is 1 (but, given *k* alone, less than 1)" (*op. cit*, p. 65.) Translating this
+to the notation I have been using---and ignoring the *k* term, which aims at
+covering what the receiver already knows, and will be irrelevant in what
+follows, we get that a signal $M$ carries the information that $S$ obtains iff
+$P(S|M) = 1 > P(S)$. That is, Dretske demands that the basic inequality holds
+and, moreover, that $M$ make $S$ certain.^[Throughout this quick review I have
+equally modified the original notation to align it with the one I have been
+using so far. I will also ignore the term $k$ that other theorists, following
+Dretske, introduce to stand for the knowledge state of the receiver of the
+signal. This term makes no difference to the purposes of this paper.]
 
-Shea drops the certainty requirement: a message $M_j$ carries the correlational
-information that $S_i$ obtains iff $P(S_i|M_j) > P(S_i|\neg M_j)$. This
-condition is equivalent to the basic inequality, $P(S_i|M_j) > P(S_i)$
-[-@SheaConsumersNeedInformation2007, p. 421].[^not-by-chance] 
+Most contemporary theorists see Dretske's certainty requirement as too
+stringent. Shea's [-@SheaConsumersNeedInformation2007, p.
+421] notion of "correlational information", for example, is basically Dretske's
+minus certainty (that is, the basic inequality): a signal $M_j$ carries the
+correlational information that $S_i$ obtains iff $P(S_i|M_j) > P(S_i|\neg
+M_j)$. This condition is equivalent to the basic inequality, $P(S_i|M_j) >
+P(S_i)$.^[Incidentally, @SheaConsumersNeedInformation2007, fn. 1, claims that
+his correlational information is "\[r\]oughly, the information of
+@ShannonMathematicalTheoryCommunication1948".]
 
-[^not-by-chance]: In many of the other proposals in this quick review, a
-not-by-chance condition is imposed on information. In Shea, for example, the
-inequality in the main text must hold "... for a common natural reason within
-some spatio-temporal domain D". In the models I will be discussing in the
-sequel part of this sort of condition is met by default: I, will be assuming an
-objective, broadly propensity-based understanding of probability statements:
-they are objective because they do not just record the epistemic state of an
-agent; and they are broadly propensity-based because they do not just summarize
-actual runs (in our case, in  actual rate of coincidence of message and state
-of affairs), but rather describe the tendency of that kind of situation to give
-rise to such frequencies, if repeated. As such, coincidence by chance is ruled
-out as not giving rise to the relevant kind of probabilistic connection. 
-
-    This takes care of the condition that there should be a reason for the
-    relevant inequality to hold (of course, assuming that a propensity-based
-    account of objective chances can be made to work.) But Shea claims that the
-    reason in question should be *one*. This is precisely the kind of condition
-    that can be investigated by using the probabilistic models of the world I
-    will favor in the sequel---although I will not discuss it in this paper.
-    For my current purposes, it will do simply to assume that the condition is
-    met. The problems I will identify with current accounts of information do
-    not depend on this.
-
-
-In Skyrms [-@SkyrmsSignalsEvolutionLearning2010, p. 36] the "information in
-[$M_j$] in favor of [$S_i$]" is defined as the *pointwise mutual information*
-[pmi henceforth, references to this label] between state and message:
-$\log\frac{P(S_i | M_j)}{P(S_i)}$. The pmi is nonzero iff the basic inequality
-is true, but it also quantifies the amount of information (i.e., the distance
-between conditional and unconditional state probabilities) as the distance of
-the pmi from zero. 
+In @SkyrmsSignalsEvolutionLearning2010, p. 36, the "information in [$M_j$] in
+favor of [$S_i$]" is defined as the *pointwise mutual information* (Also *pmi*
+henceforthi) between state and signal: $i(S_i; M_j) = \log P(S_i | M_j) - \log
+P(S_i)$. This is called "pointwise mutual information" because the mutual
+information is a weighted average of pmis: $I(S;M) = \sum_i \sum_j
+P(S_i;M_j)i(S_i; M_j)$. There is also a direct relation between pmis and the
+basic inequality: the former are nonzero iff the latter is true. Skyrms's
+proposal has the advantage, over Shea's, that it also quantifies the amount of
+information that signals carry about states (i.e., the distance between
+conditional and unconditional state probabilities) as the distance of the pmi
+from zero. 
 
 @Godfrey-SmithSignalsEvolutionLearning2011 points out that sometimes we are
 mainly interested, not in the difference of conditional and unconditional state
 probabilities, but in the actual probability of the state given that, as a
-matter of fact, the message has been produced. I.e., $P(S_i | M_j)$. 
+matter of fact, the signal has been produced. I.e., $P(S_i | M_j)$.
+@ScarantinoInformationprobabilisticdifference2015 calls this latter quantity
+the *degree of overall support*, and takes the ecumenical route of including
+both the pmi *and* the degree of overall support as the informational content
+of signals in his *probabilistic difference maker theory*  (*op. cit.* p. 429). 
 
-@ScarantinoInformationprobabilisticdifference2015 calls this latter number the
-*degree of overall support*, and takes the ecumenical route of including both
-the pmi *and* the degree of overall support as the informational content of
-signals in his *probabilistic difference maker theory*  (*op. cit.* p. 429). 
-
-The running thread uniting these prominent contemporary accounts of
+The running thread connecting these prominent contemporary accounts of
 information is that all there is to Shannon's information theory, at least for
 the purposes of investigating the nature of representation, is two quantities:
 the unconditional probability of states and the probability of states
-conditional on messages, perhaps rearranged as the logarithm of their ratio, or
-in some other way. It is not terribly surprising that it is routinely concluded
-that there is much more to representation than information: the above
-inequalities and quantities are commonly presented as signaling the presence
-of, or measuring, *natural* (sometimes, alternatively, *correlational*)
-information, and representation is taken to depend on (or perhaps be more or
-less coextensional with) the presence of *non-natural* information. 
+conditional on signals, perhaps rearranged as the logarithm of their ratio, or
+in some other way. Unsurprisingly, from this it is routinely concluded that
+there is much more to representation than information: moving probabilities in
+the way indicated by these accounts as sufficient for the presence of
+information is compatible with the signal not being a representation. As a
+result, the above inequalities and quantities are commonly presented as
+signaling the presence of, or measuring, *natural* (sometimes, alternatively,
+*correlational*) information, and representation is taken to depend on (or
+perhaps be more or less coextensional with) the presence of some other kind of
+information, a *semantic* or *nonnatural* one.
 
-Having representational status is certainly not the same as carrying
-information, and representational content is certainly not the same as
-information. On the other hand, understanding information theory the way most
-philosophers currently do (i.e., as exhausted by answers to the question
-whether certain entities carry information about other entities; answers,
-moreover, that should be given in terms of something like the basic inequality)
-is unhelpful. There is much more to information theory that can be leveraged to
-improve our understanding of representations. 
+A particularly damning shortcoming with natural information typically
+identified in this tradition is its inability to accommodate misrepresentation.
+For many philosophers, natural information quite simply cannot be false. This
+was certainly Dretske's view [e.g., -@DretskeKnowledgeFlowInformation1981,
+p. 190.] For a more recent example, @NeanderMarkMentalDefense2017, p. 6,
+distinguishes information in a "natural-factive" sense from information in a
+"fully intentional" sense, and claims that "natural-factive information is
+factive because nothing can ... carry the information that some state of
+affairs, P, is the case, unless P is in fact the case" (*op. cit.*, p. 7) Of
+course, if information is always true, representation, which is not always
+true, must depend on something else. 
 
-I will substantiate this claim in section 4 but, before that, I need to review
-some of the proposal that have been made as to ways to bridge the gap between
-information and representation. I will argue that most of these ways,
-apparently non information-theoretic, can in fact be fruitfully regarded as
-attempts to identify a cluster of yet more (Shannon) informational properties.
-
-# Bridging natural and nonnatural 
-
-A quick recap: most everyone agrees that information is important to
-representation but, the dominant understanding of information being what it is,
-most everyone agrees as well that information must be supplemented with
-extra-informational properties if it is to amount to representational content.
-There are a few reasons why information-carrying alone is usually deemed
-insufficient for representational status.
-
-First, it is sometimes assumed in philosophy that information, in the
-understanding spelled out in the previous section, must be always true. For
-example, @NeanderMarkMentalDefense2017, p. 6, distinguishes information in a
-"natural-factive" sense from information in a "fully intentional" sense, and
-claims that "natural-factive information is factive because nothing can ...
-carry the information that some state of affairs, P, is the case, unless P is
-in fact the case" (*op. cit.*, p. 7)
-
-A dissenting voice here is @SkyrmsSignalsEvolutionLearning2010, ch. 3, who
-offers his notion of informational content, reviewed above, as "a
-generalization of standard philosophical notions of propositional content".
-Consider again the random variable, $S$, that represents the world. We can
-calculate the information that a certain message $M_i$ carries in favor of all
-world states $S_j$. This results in an *informational content* vector:
+In fact, the problems natural information has with misrepresentation does not
+depend on the claim that the former is always true.
+@SkyrmsSignalsEvolutionLearning2010, for example, shows that pointwise mutual
+informations are not always true, yet his preferred representational contents
+are also incapable of misrepresentation. Consider again the random variable,
+$S$, that represents the world. We can calculate the pmi between a certain
+signal, $M_i$, and all states $S_j$ that $S$ can be in. This results in an
+*informational content* vector:
 
 $$\langle\log_2 p(S_1 | M_i) - \log_2 p(S_1), \ldots, \log_2 p(S_n | M_i) -
 \log_2 p(S_n)\rangle$$
 
-According to Skyrms, the standard philosophical notion of content should be
-identified with those world states $S_j$ which the message does not rule
-out---i.e., those for which $p(S_j | M_i) > 0$. This corresponds to
-non-infinite entries in the informational-content vector (because the logarithm
-of zero is minus infinity.) So, if the only states not ruled out by $M_i$ are,
-say, $S_1$ and $S_2$, then $M_i$ has the propositional content that $S_1$ or
-$S_2$ is the case. As @BirchPropositionalcontentsignalling2014 has pointed out, though, such
-Skyrmsian propositional contents have the fatal flaw that they cannot be false: 
+As Skyrms notes, there is a clear sense in which $M_i$ can be, at the very
+least, misleading: suppose the world happens to be in $S_1$, and the entry
+corresponding to this state in the $M_i$ informational content vector is
+negative, as it might well be. This means that the presence of $M_i$ *lowers*
+the probability of $S_1$, the state the world is actually in. The complementary
+case of a misleading message is one that has a positive entry in the
+informational-content vector corresponding to a non-actual state. In view of
+these simple facts about pointwise mutual information, the insistence that
+information is always true seems misplaced. 
 
-First, $S_j$ is part of the content of $M_i$ if and only if $M_i$ does not rule
-out $S_j$. 
+In any case this doesn't get information off the hook. It is one thing to be
+probabilistically misleading in the sense just explained, and another to be
+well and truly false. This latter property seems to inhere in propositions and
+related entities only, and propositions the informational-content vectors are
+not. @SkyrmsSignalsEvolutionLearning2010, p. 42 suggests that the standard
+philosophical notion of representational content for a signal can be recovered
+by identifying it with the disjunction of those world states which the signal
+does not rule out---i.e., those states $S_j$ for which $P(S_j | M_i) > 0$. This
+corresponds to finite entries in the informational-content vector (because the
+logarithm of zero is equal to $-\infty$.) So, if the only finite entries in the
+vector are the ones corresponding to, say, $S_1$ and $S_2$, then $M_i$ has the
+representational content *that either $S_1$ or $S_2$ is the case*. 
 
-But $M_i$ will be false only if it is produced in a world state which is not
-part of its content. 
+Skyrms claims that, through this interpretation, representational content comes
+out as a "special case of the much richer information-theoretic account of
+content" [@SkyrmsSignalsEvolutionLearning2010, p. 42.] Unfortunately, these
+Skyrmsian contents again cannot be false, as the following simple argument [in
+@BirchPropositionalcontentsignalling2014] makes clear.
 
-So, for it to be false, it has to be produced in a state which it rules out,
-that is, a state $S_k$ such that $p(S_k | M_i) = 0$. A consequence of this is
-that, if $p(M_i) > 0$ (that is, if the message can be produced at all) then
-$p(M_i | S_k)$ is also zero.^[This is just an application of Bayes theorem:
-$p(A|B) = \frac{p(B|A)p(A)}{p(B)}$.] That is, it is impossible for the message
-to be produced in a state in which it would be false.
+1. First, as per Skyrms's definition of representational content, $S_j$ is a member
+  of the disjunction that is the content of $M_i$ iff $M_i$ does not rule out $S_j$. 
 
-Representational content, then, cannot be just a special case of informational
-content. The usual way in which this point is made is with a nod to Grice's
-[-@GriceMeaning1957, p. 378] distinction between "natural" and "nonnatural"
-meaning. Natural meaning is the relation that holds, e.g., between smoke and
-fire, or spots and measles. Nonnatural meaning holds, e.g., between sentences
-and the propositions they express. Grice (*op. cit*, p. 379) leaves openthe
-possibility of giving an account of nonnatural meaning in terms of natural
-meaning---although this is not his own project. This is the kind of account
-that contemporary naturalistic metasemanticists see themselves as engaging in
-(Scarantino, Neander).
+2. But $M_i$ will be false only if it is produced in a world state which is not
+   part of its content---this is just what being false amounts to. 
 
-In what follows I will consider a couple of ideas which have been floated as to
-ways to construct nonnatural meanings out of natural ones. My aim is not to
-argue against them. I think they are on the right track. My claim will rather
-be that a better informed understanding of Shannon's information theory
-provides a way to incorporating these insights in a unified, purely
-informational account of representation.
+3. Putting 1 and 2 together, for $M_i$ to be false it has to be produced in a
+   state which it rules out, that is, a state $S_k$ such that $P(S_k | M_i) =
+   0$.
+
+4. But if $P(S_k | M_i) = 0$ then, if $P(M_i) > 0$ (that is, if the signal
+   can be produced at all), $P(M_i | S_k)$ is also zero.^[This is just an
+   application of Bayes's theorem: $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$.] 
+
+* The signal being produced in a state in which it would be false has
+  probability zero. It cannot happen.
+  [@BirchPropositionalcontentsignalling2014, section 3]
+
+The upshot is that, quite independently from whether information is always true
+(it is not, as Skyrms convincingly shows), representational content cannot be
+just a special case of informational content. From this it has been unanimously
+concluded that *non-informational* ingredients must be added to the informational
+mix in order to get representations. This conclusion is premature because, as I
+have been urging, informational contents in the Dretskean tradition is not by
+long shot all there is to information theory but, before getting to that, I
+will consider a couple of ideas which have been floated as to ways to bridge
+the information-representation gap. My aim is not to argue against them. I
+think they are on the right track. My claim will rather be that a better
+informed understanding of Shannon's information theory provides a way to
+incorporating these insights in a unified, purely informational picture.
+
+# Bridging Information and Representation
+
+A quick recap: most everyone agrees that information is important to
+representation but, the dominant understanding of information being what it is,
+most everyone agrees as well that information must be supplemented with
+non-informational properties if it is to amount to representational content. I
+this section I present two of the most influential proposals as to the nature
+of these properties.
 
 ## Many-to-one-to-many Architectures
 
 The first proposal has to do with *architectural* constraints on
 representational vehicles. The idea is that it is not enough that these
-vehicles carry information, in any of the closely related senses discussed
-above; on top of that, they must sit in the right place in a certain cognitive
-architecture. There are a few proposals along these lines.
+vehicles (the signals of the previous section) carry information, in any of the
+closely related senses discussed above; on top of that, they must sit in the
+right place in a certain cognitive architecture.
 
 @SterelnyThoughtHostileWorld2003, for example, has argued that talk of
-representation has a place only when the cognitive system that has them
-functionally distinguishes belief-like state from goal-like states---when
-representations are, in his favored teminology, *decoupled*. Sterelny suggests
-that decoupling is enabled by two prior evolutionary transitions: from
-"detection" to "robust tracking", on the one hand; and from "narrow-banded" to
-"broad-banded". Detection systems, for Sterelny, are just single-cued
-discriminatory mechanisms
-(p. 26): there is one single feature of the environment detection systems are
-attuned to, via a single cue. Single-cue detection works very well when the
-environment is "transparent"---i.e., when it cooperates, there being high
-correlation between a property relevant to the agent's fitness and a cue
-the agent can detect. But environments are often "translucent": "there is a
-complex relationship between the incoming stimuli that the organism can
-detect and the features of relevance to it" [@SterelnyThoughtHostileWorld2003, p.
-78]. In those cases, it pays for cognitive agents to develop *broad-banded*
-detection systems, which are able to zero in on whatever is
-fitness-relevant throughout changes in the properties actually detected by
-the sensory apparatus. Broad-banded detection is in essence a *many-to-one*
-relation between input and representational vehicle: different inputs give
-rise to the same representation. 
-
-The other property that @SterelnyThoughtHostileWorld2003 proposes as a mark of
-representational status is what he calls *response breadth*
-[@SterelnyThoughtHostileWorld2003, p. 90]: the idea here is that a single
-representation will give rise to different courses of action, depending on the
-context (that may include other mental states of the agent). Response breadth
-is in essence a *one-to-many* relation between representational vehicle and
-output: same representation gives rise to different agential outputs.
+representation has a place only when the cognitive system that putatively hosts
+them makes a functional distinction between belief-like states and goal-like
+states---i.e., when representations are, in his favored teminology,
+*decoupled*. Sterelny suggests that decoupling is enabled by two prior
+evolutionary transitions: from "detection" to "robust tracking", on the one
+hand; and from "narrow-banded" to "broad-banded" behavioral responses, on the
+other. Detection, for Sterelny, is just the deployment of single-cued
+discriminatory mechanisms (*op. cit*, p. 26): there is one single feature of
+the environment detection systems are attuned to, via a single cue. Single-cue
+detection works very well when the environment is "transparent"---i.e., when it
+cooperates with the goal of the agent, there being high correlation between a
+property relevant to the agent's fitness and a cue the agent can detect. But
+environments are often "translucent": "there is a complex relationship between
+the incoming stimuli that the organism can detect and the features of relevance
+to it" [@SterelnyThoughtHostileWorld2003, p. 78]. In those cases, it pays for
+cognitive agents to develop robust-tracking mechanisms, which are able to zero
+in on fitness-relevant hidden features of the environment throughout changes in
+the properties actually detected by the sensory apparatus. Robust tracking is
+in essence a *many-to-one* relation between world state and signal: many
+sensory inputs give rise to one and the same representation. The other property
+that @SterelnyThoughtHostileWorld2003 proposes as a mark of representational
+status is what he calls *broad-banded response*
+[@SterelnyThoughtHostileWorld2003, p. 90]: the idea here is that in
+broad-banded systems a single representation will be flexibly dealt with,
+resulting in different courses of action, depending on the context where the
+representation is tokened (this context may include other mental or physical
+states of the agent). Response breadth is in essence a *one-to-many* relation
+between representational vehicle and output: one representation, many agential
+outputs.
 
 Other theorists have advocated similar architectural constraints on
 representational vehicles. Famously, @BurgeOriginsobjectivity2010 places a
@@ -417,64 +467,69 @@ from different perceptual perspectives. These differences in perspective and
 representational content, or perceptual mode of presentation, are caused by
 variations in sensory registration of proximal stimulation."
 [@BurgeOriginsobjectivity2010, p. 411.] This is clearly a variation on
-Sterelny's broad-banded detection and, as such, a many-to-one architectural
-constraint on representational status.
+Sterelny's robust tracking and, as such, a many-to-one architectural constraint
+on representational status.
 
 Constancies are typically presented [in @BurgeOriginsobjectivity2010; but also,
 e.g., @SchultePerceptualrepresentationsteleosemantic2015; or
 @RescorlaMillikanhoneybeenavigation2013] as helping overcome the extreme
 liberality of naturalistic accounts of representation. Rescorla, for example,
-remarks that "[t]ruth-conditions [i.e., representations---MM] must earn their
-explanatory keep" [@RescorlaMillikanhoneybeenavigation2013, p. 93] and argues
-that, while the postulation of representations is warranted in vision science,
-precisely because of many-to-one facts such as "the visual system [deploying]
-various cues ... to estimate that a perceived object has a certain depth" [op.
-cit., p. 92; original emphasis suppressed] things are less clear for other
-vehicles (such as, e.g., signals exchanged by bacteria) that are typically
-credited with representational content in the literature on naturalistic
-metasemantics. It is less clear why many-to-one structures should aid to the
-representational status of the target vehicle. What's 
+remarks that representations "must earn their explanatory keep"
+[@RescorlaMillikanhoneybeenavigation2013, p. 93] and argues that, while the
+postulation of representations is warranted in vision science, precisely
+because of many-to-one facts such as "the visual system [deploying] various
+cues ... to estimate that a perceived object has a certain depth" [op. cit., p.
+92; original emphasis suppressed] it is not for,  e.g., signals exchanged by
+bacteria, even if information flows through those signals too.^[Whether
+entities that do not meet these explanatory scruples should count as
+representations in general is a complicated question, and one about wish I
+don't want to take a stand here. I do believe I have identified a principled
+way to distinguish signals that meet them from signals that don't, on
+informational grounds. But whether those that don't deserve been called
+representations, and when, is a question I leave for another paper. See
+@ArtigaLiberalRepresentationalismDeflationist2016 for an excellent discussion
+of this topic.]
 
 ## Reference Magnetism
 
-A second important idea in the program of deriving non-natural meaning from
-natural meaning is to focus on the entities that should figure in the content
-of simple representations. The suggestion, typically, is that represented
-entities should belong to natural, or real, kinds.  For example, Dan Ryder
+A second influential idea in the program of deriving representations from
+information is to focus on the entities that should figure in the content of
+simple representations. The suggestion, typically, is that represented entities
+should be appropriately *natural*, or *real*.  For example, Dan Ryder
 [-@RyderSINBADNeurosemanticsTheory2004; -@RyderThinkingKinds2006] has argued
-that in what he calls the SINBAD^[This acronym stands for Set of INteracting
+that, in what he calls the SINBAD^[This acronym stands for Set of INteracting
 BAckpropagating Dendrites" [@RyderSINBADNeurosemanticsTheory2004; p. 212].]
 model of the cortex, neurons become attuned to *sources of correlation*. These
 entities are closely related to Richard Boyd's *homeostatic property clusters*
-[also HPC henceforth],^[First presented in his [-@BoydWhatRealismImplies1989];
-see also -@BoydHomeostasisSpeciesHigher1999;
+[also HPC henceforth],^[First presented in @BoydWhatRealismImplies1989; see
+also his -@BoydHomeostasisSpeciesHigher1999;
 @ChakravarttyMetaphysicsScientificRealism2007;
-@KornblithInductiveInferenceits1993; @MagnusScientificenquirynatural2012, among
-many others.] HPC theory, one of the main naturalistic accounts of natural
-kinds, identifies such kinds with clusters of properties which tend to be
-instantiated together, and such that this frequent co-instantiation is not just
-a statistical fluke---these clusters (the HPCs in question), at least in some
-cases, are the target of our natural-kind terms. What Ryder calls sources of
-correlation are the grounds for these HPC-related frequent
-co-instantiations---whatever it is that makes them *not* statistical
+@KornblithInductiveInferenceits1993; @MagnusScientificenquirynatural2012;
+@MartinezInformationallyConnectedPropertyClusters2015, among many others.] HPC
+theory, one of the main naturalistic accounts of natural kinds, identifies such
+kinds with clusters of properties which tend to be instantiated together, and
+such that this frequent co-instantiation is not just a statistical
+fluke---these clusters (the HPCs in question), at least in some cases, are the
+target of our natural-kind terms. 
+
+What Ryder calls sources of correlation are the grounds for these HPC-related
+frequent co-instantiations---whatever it is that makes them *not* statistical
 flukes.^[It should be pointed that it is compatible with Boyd's original
-formulation that there be no clear grounds of correlation: according to Boyd
-perhaps it's just that the instantiation of some properties make the
-instantiation of other properties more likely and the whole cluster pulls
-itself up by its bootstraps [see @BoydWhatRealismImplies1989, p. 16]. These
-complications need not detain us here.] According to Ryder, cortical processing
-in the brain is uniquely suited to the identification and prediction of these
-sources of correlation. Ryder suggests that many of the representations the
-brain trades target sources of correlation.
-@MartinezTeleosemanticsIndeterminacy2013 and Artiga (manuscript) have made more
-general cases that simple representations preferably target Boydian HPCs, or
-related entities. In all three cases, the account is, implicitly or explicitly,
-presented as a way to solve the indeterminacy problem for naturalistic
-metasemantic accounts.
+formulation that the sources of correlation lie with the properties themselves:
+in some cases perhaps it's just that the instantiation of some properties make
+the instantiation of other properties more likely and the whole cluster pulls
+itself up by its bootstraps [see @BoydWhatRealismImplies1989, p. 16].] Ryder
+claims that many of the representations the brain trades in target sources of
+correlation. @MartinezTeleosemanticsIndeterminacy2013 and
+@ArtigaBlackSpotsNutritiousforthcoming have made more general cases that simple
+representations preferably target HPCs (for Martínez), or properties that best
+explain the co-occurrence of other properties (for Artiga). In all three cases,
+the account is, implicitly or explicitly, presented as a way to solve the
+indeterminacy problem for naturalistic metasemantic accounts.
 
 A very similar idea has been proposed in what is, as far as I am aware, a
-totally independent line of enquiry starting with @LewisNewworktheory1983 and
-@LewisPutnamparadox1984: "among the countless tinhgs and classes there are ...
+totally independent line of enquiry starting with [@LewisNewworktheory1983;
+@LewisPutnamparadox1984]: "among the countless tinhgs and classes there are ...
 [o]nly an elite minority are carved at the joints, so that their boundaries are
 established by objetive sameness and difference in nature. Only these elite
 things and classes are eligible to serve as referents"
@@ -487,7 +542,7 @@ terms." (Sider, *op. cit.*)
 It's interesting to note that both the appeal to many-to-one-to-many
 architectures and reference magnetism are defended on explanatory grounds. As
 we have seen, according to Burge and others, the presence of constancies makes
-the appeal to representations explanatorily fruitful. According to Sider
+the appeal to representations explanatorily fruitful. According to Sider,
 reference magnetism is just an example of the general rule according to which
 only "joint-carving terms" should figure in explanations. It is considerably
 less clear in just which way the aforementioned explanatory virtues are related
@@ -498,113 +553,124 @@ reference magnetism made necessary by many-to-one-to-many architectures? Vice
 versa? Both by a third different thing? Are they unrelated constraints on
 representational vehicles and their content?
 
-As we are about to see, these two ideas are indeed related. In order to see how
-we need to step up our information-theoretic game. 
+As we are about to see, these two ideas are indeed related, and the explanatory
+payback they bring to representation talk depends on their informational
+underpinnings. In order to see how we need to step our information-theoretic
+game up. 
 
 # Information Theory is a Source-Channel Theory
 
-As we saw in section 2, philosophy has understdood information theory as a
-mostly definitional effort: at least for all philosophers of mind have
-typically cared, the theory begins and end with a presentation of what it takes
-for one random variable (or the worldly feature it stands for) to carry
-information about another. This is, in all likelihood, a result of the immense
-influence that Dretske's 1981 book has had in shaping the philosopher's
-conception of information theory. But information theory is, emphatically, not
-a definitional effort. It is, well, a *theory*, and as such it is chiefly
-composed of claims that are proposed as true about the world. 
+As we saw in section 2, philosophy has understood information theory as a
+mostly *definitional* effort: for all philosophers of mind have typically
+cared, the theory begins and ends with a presentation of what it takes for one
+random variable (or the worldly feature it models) to carry information about
+another. But information theory is, emphatically, not a definitional effort. It
+is, well, a *theory*, and as such it is chiefly composed of claims that are
+advanced in the hope that they be true about the world. 
 
 In a nutshell, the most celebrated results in information theory have to do
-with how faithful transmission over a channel can be, as a function of the
-capacity of the channel in question. These results have played absolutely no
-role in informational accounts of representation. I will presently defend that
-they are, in fact, central to understanding in which way representation is
-connected to information. Take the idealized representation of an
-information-processing pipeline in fig 1.
+with specifying how faithful the transmission of information from a source can
+be, when it happens over a (typically noisy, typically narrow) channel. These
+results have played absolutely no role in informational accounts of
+representation. Again here, this neglect plausibly comes from a theoretical
+choice by Dretske: source entropy and channel capacity track averages and,
+according to him "if information theory is to tell us anything about the
+informational content of signals, it must forsake its concern with averages and
+tell us something about the information contained in *particular* messages and
+signals. For it is only particular messages and signals that *have* a content"
+[@DretskeKnowledgeFlowInformation1981, p. 48.] 
+
+Dretske's reasoning here is not perfectly cogent: there is simply no reason to
+think that information theory can *only* be explanatory in relation to the
+content of signals by directly telling us how to calculate such contents.
+Here's one alternative: it may help us specify (in terms of those results about
+average values that Dretske urged us to forsake) which properties an
+information-processing pipeline needs to have so that its signals count as
+representations; then these properties, in their turn, would fix or constrain
+the content of signals. Indeed, I will presently defend that this is precisely
+the way in which central results and ideas in information theory may illuminate
+the nature of representation. Take, for starters, the idealized depiction of an
+information-processing pipeline in fig. 1 [*cf.*
+@CoverElementsInformationTheory2006, fig. 7.1;
+@ShannonMathematicalTheoryCommunication1998, Fig. 1.]
 
 ![An information-processing pipeline](graphviz/infotheory.pdf)
 
-Here an *encoder* produces a signal as a response to information incoming from
-a source. This signal goes through a channel and is subsequently decoded,
-producing a message that is then utilized for whatever relevant purposes
-downstream.
+Here an *encoder*^[We shouldn't read much at all into the "encoder" label. Its
+role is possibly played by blind, simple physical processes, as it would in the
+case of smoke as a signal and fire as a source.] produces a signal as a
+response to information incoming from a source. This signal goes through a
+channel and is subsequently decoded, producing a message that is then utilized
+for whatever purposes downstream. For reference, fig. 2 presents the very same
+pipeline as fig. 1, changing the labels to others more familiar to philosophers
+of mind. In what follows I use the more standard terminology in fig. 1.
+
+![An information-processing pipeline -- philosophy of mind
+version](graphviz/infotheory_philmind.pdf)
+
+The first thing to note is that the broadly Dretskean definitions of the
+content of a signal introduced in section 2 only have use for the first two
+links in this information-processing chain: how signals carry information about
+a certain original message produced by a source, as depicted in Fig. 3. In
+fact, in information theory the main action happens immediately after that: a
+source is producing stuff, and we want that stuff to go through a channel.
+Information theory is mainly about providing theoretical guarantees of
+faithfulness in transmission, given how "wide" the channel is.
 
 ![The information-processing pipeline in the Dretskean tradition](graphviz/info_for_philosophers.pdf)
 
-The first thing to note is that the philosopher's notions introduced above only
-have use for the first two links in the information-processing chain: how
-signals carry information about a certain original message produced by a
-source, as depicted in Fig. 2. But, in fact, in information theory the main
-action happens later: a source is producing stuff, and we want that stuff to go
-through a, typically smallish, channel. Information theory is mainly about
-providing theoretical guarantees of faithfulness in transmission, given how
-"wide" the channel is.
+In order to do this we start by providing a measure of the richness of the
+source, $S$, in terms of its entropy (see section 2.) Every time the source is
+"used" it produces a message  $S_i$ according to a certain probability
+distribution. This message is taken by the encoder which encodes it into a
+signal that fits through a channel. We can think of the *rate* of the
+channel as the number of bits it provides for the encoder to use in the signal.
+If, say, the rate is 2 bits per use of the channel, this means the encoder can
+use up to 2 bits to construct the signal and be sure that it can pass unscathed
+through the channel and on to the decoder.^[For more on channel capacity, and
+Shannon's second theorem, the basic result on this topic, see
+@CoverElementsInformationTheory2006, chapter 7.]
 
-We start by providing a measure of the *richness* of the source---a measure,
-that is, of how much one needs to know about the source to characterize it in
-full. This is called the *entropy* of the source, and can be thought of as the
-number of yes/no questions that must be asked in order to fully know the state
-of the source (i.e., the message it has produced.) The source, $S$, will be
-modeled by random variable which can be in *n* possible different (jointly
-exhaustive, mutually exclusive) states, $S_i$, each one of them with a certain
-probability, $P_i$. In these circumstances, the entropy of the source, $H(S)$,
-is calculated as
+Suppose again that the source models tosses of a fair coin. This source, we saw
+above, has an entropy of 1 bit per use. Now, the channel allows the passage of
+a certain number of symbols per use. For example, it might allow the passage of
+one out of two possible symbols---this, again, corresponds to a rate of 1 bit
+per use. This is enough to communicate all there is to know about the source:
+it would suffice to send one of the symbols when the coin lands heads, and the
+other when it lands tails.
 
-$$H(S) = -\sum_n P_i\log(P_i)$$
-
-The logarithm is typically, but not necessarily, in base 2, in which case the
-entropy is calculated in *bits*. For a quick example, suppose that the source
-is a fair coin that we toss. This can be modeled by random variable with two
-states, *heads* and *tails*, such that $P_{heads} = P_{tails} = 0.5$. 
-
-In this case, $H(S) = -\log\frac{1}{2} = 1$ bit, which corresponds to our
-intuitive characterization of entropy above: we only need to ask *one* yes/no
-question in order to find out the state of our source (i.e., whether the coin
-came out heads or tails). Say, "did the coin land tails?". This corresponds to
-the 1 bit value for the entropy of the source that we have just calculated.
-
-We can also think of the *rate* of the channel in terms of entropy: we suppose
-that the source is doing its thing periodically; say, in our example, the coin
-is tossed every 10 seconds. This means that the source produces information at
-a rate of .1 bit/s (or 1 bit per 10 seconds.) The channel allows the passage of
-a certain number of non-overlapping symbols in the same period of time. For
-example, the channel might allow the passage of one out of two possible symbols
-every 10 seconds---this, again, corresponds to a .1 bit/s rate. This is enough
-to communicate all there is to know about the source: it would suffice to send
-one of the symbols when the coin lands heads, and the other when it lands
-tails.
-
-Indeed, Shannon's *source coding theorem*, one of the most celebrated early
+In general, Shannon's *source coding theorem*, one of the most celebrated early
 results in information theory, states that it is possible to transmit through a
 channel information coming from a source with an arbitrarily small error (that
 is, losslessly) iff the rate of the channel is equal to or larger than the
 entropy of the source. If the rate is smaller, lossless transmission is
-impossible.
-
-The source coding theorem is all about lossless transmission. This is not
-particularly relevant, for our current purposes of illuminating the notion of
-representation: representations never are a lossless picture of what the world
-looks like when the representation is produced. Consider, for example, animal
-alarm calls. Vervet monkeys, for example are typically described as being able
-to produce three different, discrete kinds of calls^[Or perhaps four. See
-@PriceDeterminateFunctions1998.] [@SeyfarthMonkeyresponsesthree1980;
-@SeyfarthVervetmonkeyalarm1980], that are typically taken to be associated with
-the presence of leopards, eagles and snakes respectively (or predators which
-are similar to these three.) Obviously, the entropy of the environment that
-prompts the production of a call vastly outstrips the rate of a channel which
-consists in the production of just one out of three possible signals. This
-means, as per the source coding theorem, that loss in communication is
-inevitable. Alarm calls are all about *lossy transmission*.
+impossible. This theorem is all about lossless transmission, which is not
+particularly relevant for our current purposes of illuminating the notion of
+representation: representations never are lossless pictures of what the world
+looks like when the representation is produced. Consider animal alarm calls.
+Vervet monkeys, for example, are typically described as being able to produce
+three different, discrete kinds of calls [@SeyfarthMonkeyresponsesthree1980;
+@SeyfarthVervetmonkeyalarm1980],^[Or perhaps four
+[@PriceDeterminateFunctions1998].] that are typically taken to be associated
+with the presence of leopards, eagles and snakes respectively. Obviously, the
+entropy of the environment that prompts the production of a call (think of all
+the possible patterns of approach of these predators, the variation in shape
+and color, etc.) vastly outstrips the rate of a channel which consists in the
+production of just one out of three possible signals---i.e., a maximum of 1
+trit per use. This means, as per the source coding theorem, that loss in
+communication is inevitable. Alarm calls, and for analogous reasons
+representations in general, are all about *lossy transmission*.
 
 The way in which information theory deals with lossy transmission is by
 defining a *distortion measure* [@CoverElementsInformationTheory2006, p. 304]
 that gives a score to a pair composed of a certain original message $M$, and
-the decoded version thereof, $\hat{M}$, (see Fig. 1). One common distortion
-measure is the *Hamming distortion* which simply adds 1 to the distortion when
-the bits in the original and decoded messages (which we can assume to be binary
-strings) do not coincide, and 0 otherwise. So, for example, the Hamming
-distortion between an original message $M = 010011$ and a decoded message
-$\hat{M} = 100010$ is 3, because the first, second, and last bits have been
-decoded incorrectly.
+the decoded version thereof, $\hat{M}$, (see fig. 1). One common measure I will
+be using in what follows is the *Hamming distortion* which simply adds 1 to the
+distortion when the bits in the original and decoded signals (which we can
+assume to be binary strings) do not coincide, and 0 otherwise. So, for example,
+the Hamming distortion between an original signal $M = 010011$ and a decoded
+signal $\hat{M} = 100010$ is 3, because the first, second, and last bits have
+been decoded incorrectly.
 
 The central result in this so-called *rate distortion theory* approach to lossy
 transmission is that there is a *rate distortion function*, $R(D)$ which gives
@@ -612,287 +678,433 @@ the minimum rate at which any given distortion is achievable (and,
 equivalently, gives the minimum achievable distortion at any given rate.)^[In
 the limit of distortion zero, this result turns into the source coding
 theorem.] The actual mathematical expression of the rate distortion function
-does not need to detain us (see @CoverElementsInformationTheory2006, p. 307,
-theorem 10.2.1.) What is relevant to us is that the *Blahut-Arimoto* algorithm
-[@BlahutComputationchannelcapacity1972; @Arimotoalgorithmcomputingcapacity1972]
-allows us to calculate easily the rate distortion function---we will be
-presently seeing a few examples.
+does not need to detain us here [see @CoverElementsInformationTheory2006,
+p. 307, theorem 10.2.1.] What is relevant to us is that the *Blahut-Arimoto*
+algorithm [@BlahutComputationchannelcapacity1972;
+@Arimotoalgorithmcomputingcapacity1972] allows us to calculate $R(D)$
+easily---we will be presently seeing a few examples.
 
-The main proposal I make in this paper is that representations tend to live in
-information processing systems whose rate distortion function has *sweet
+The main thesis of this paper is that representations tend to live in
+information-processing pipelines whose rate distortion function has *sweet
 spots*: by this I mean points in the rate distortion curve such that the
 usefulness of increasing the rate of the channel past those points is much
-smaller than before reaching them. Moreover, at least in a number of
-paradigmatic cases, representations tend to happen in the vicinity of those
-sweet spots. I submit that it is this set of purely information-theoretic
-properties that the conditions on representation discussed in section 3 try to
-get at.
+smaller than before reaching them.^[If you want a quick illustration of what a
+rate-distortion sweet spot looks like, take a peek at fig. 6. The sudden drop
+in the red curve marks the spot. We'll be getting to this soon.] Moreover, at
+least in a number of paradigmatic cases, representations tend to happen in the
+vicinity of those sweet spots. I submit that it is these purely
+information-theoretic properties that the conditions on representation
+discussed in section 3 try to get at.
 
-To get the hang of things let's start by looking into the rate distortion curve
-for the fair-coin source we have been using as our running example. We will use
-the Hamming distortion as our target distortion measure. Some questions about
-this curve can be answered without maths: first, what's the minimum average
-distortion achievable when the rate is zero---i.e., when the channel is
-perfectly closed? Well, the best the decoder can do, given that nothing is
-coming through the channel, is always say, e.g., tails, and hope for the best.
-This desperate policy will get things right half of the time---whenever the
-coin did land tails. This means that the expected distortion will be 0.5.
+To see how rate-distortion analyses work let's start by looking into the
+fair-coin tosses case I have been using as an example. Using the Hamming
+distortion as our target distortion measure, if the coin lands heads (tails)
+and the decoded message is tails (heads) the distortion is 1, otherwise 0. Some
+questions about the rate-distortion curve for this case can be answered without
+doing any maths: first, what is the minimum average distortion achievable when
+the rate is 0---i.e., when the channel is perfectly closed, and no signal
+arrives to the decoder? Well, the best the decoder can do, given that nothing
+is coming through the channel, is always say, e.g., tails, and hope for the
+best. This desperate policy will get things right half of the time---whenever
+the coin does land tails. This means that the expected distortion will be 0.5.
 Second, what's the rate for which the distortion is zero? We know from the
 source coding theorem that this rate is equal to the entropy of the source: 1
-bit. We know now the points at which the curve makes contact with the x-axis
-(distortion zero) and the y-axis (rate zero). Using the Blahut-Arimoto
-algorithm we can draw the rest of the curve, in Fig. 3.
+bit per use. We know now the points at which the curve makes contact with the
+x-axis (distortion zero) and the y-axis (rate zero). Using the Blahut-Arimoto
+algorithm we can draw the rest of the curve, in fig. 4.
 
 ![The rate-distortion function for a coin
 toss](/home/manolo/Models/rate_distortion_signaling/bernoulli_rd.pdf){scale=0.3}
 
-Here the blue line is the rate distortion function. As we have already seen, it
-interects the x-axis at rate equals 1.0 (which is the entropy of the soruce)
-and it intersects the y-axis at 0.5 (which is the lowest average distortion one
-can achieve when the channel is closed.) The red line gives the slope of the
-blue one. That is, it gives a measure of how steep the blue line is. There is
-not much structure to this example: increasing the rate makes the achievable
-expected distortion go down, and that's about it. Yet the example has all the
-information-theoretic ingredients philosophers have typically cared about:
-there is a source, and a signal that carries information about the source. It's
-really no wonder that this is deemed insufficient to account for
-representational status. 
+Here the blue line is the rate-distortion curve. As we have already seen, it
+intersects the x-axis at 1.0 bits (the entropy of the source) and it intersects
+the y-axis at 0.5 (the lowest average distortion one can achieve when the
+channel is closed.) The red line gives the slope of the blue one. That is, it
+gives a measure of how steep the blue line is at any given point. 
 
-Let's consider now a more complicated example. Here, the source---the situation
-we are trying to gather information about---is composed of two homeostatic
-property clusters (see above). They are modeled as two independent Bayes
-networks, each with a parent node and four children. Each of the nodes stands
-for a property; if the node is *on* it means the property is instantiated; if
-it is *off* it means it is not. In the model children nodes replicate noisily
-the state of their parent. Thus, e.g., if the parent is *on* (if the
-corresponding property is instantiated) each child property will have a .95
-chance of being instantiated too; if the parent is *off* the probability for
-each children of being instantiated is .05. See Fig. 4.
+The situation this setup is modeling is one in which a single cue is present or
+absent, and a signal tries to keep track of whether it does. This is precisely
+the kind of situation where many theorists (certainly Burge, Schulte and others
+that made their appearance in section 3.1) would see the postulation of
+representations as entirely uncalled for. One of the chief examples in
+@SchultePerceptualrepresentationsteleosemantic2015 of signals that "should not
+count as genuine representations" (*op. cit*, p. 126) is the state consisting
+on there being a high concentration of the hormone vasopressin in the blood.
+Schulte explains that this concentration grows when the osmolarity of blood
+reaches a certain level, and "it would add nothing to the explanation of the
+process to describe these hormonal states as *representations* of high plasma
+osmolarity" (*ibid*.) The coin-toss model applies directly to Schulte's
+vasopressin example: blood osmolarity plays the role of the source, which can
+be "on" or "off" (i.e., above or below the relevant threshold) with a certain
+probability. Vasopressin concentration plays the role of the signal. In
+agreement with the idea that postulating representations here is idle, there is
+not much structure to the rate-distortion curve corresponding to this setup:
+increasing the rate makes the achievable expected distortion go down, until the
+rate hits the entropy of the source at which point the achievable distortion is
+zero (as per the source coding theorem.) That's about it. 
+
+Let's now model one kind of situation in which there is a reasonably wide
+consensus that representations make an explanatory contribution: vervet-monkey
+alarm calls, as reviewed above. In the model, the source---the situation the
+information-processing pipeline is dealing with---randomly makes members of two
+natural kinds (we can think of them as two different predators) be or not
+present at any given time, independently from one another. This intends to
+mimic the situation vervet monkeys face, where snakes, leopards and eagles
+show up or not, more or less at random.
+
+These natural kinds are modeled as homeostatic property clusters (see section
+3.2 above): groups of properties which tend to be instantiated together, but
+such that there is no guarantee that they do. In order to derive a explicit
+probability distribution for the source out of this qualitative description,
+the two HPCs are in their turn represented by two Bayesian
+networks,[^bayes-net] each with a parent node and four children (see fig. 5.)
+Each of the nodes stands for a property; if the node is *on* it means the
+corresponding property is instantiated; if it is *off* it means it is not. In
+the model, children nodes replicate noisily the state of their parent. Thus,
+e.g., if the parent is *on* (if the corresponding property is instantiated)
+each child property will have a .95 chance of being instantiated too; if the
+parent is *off* the probability for each children of being instantiated is .05.
+The unconditional probability of instantiation for the two parent nodes is
+.5.[^probabilistic-graphical-models]
+
+[^bayes-net]: A Bayesian network is a graph that is both acyclic (i.e., with no
+loops), and directed (i.e, where edges have a privileged direction). In
+Bayesian networks, if an edge goes from node A to node B we say that A is a
+parent to B (and B a child to A). The graph represents the following so-called
+"Markov condition": every node $n_i$ in the network is independent of any other
+node $n_j$, conditional on the value of $n_i$'s parents. This means that, given
+the Bayesian network, and, for every node, a table of probabilities of that
+node conditional on its parents, we can reconstruct the full joint probability
+distribution. For much more on Bayesian networks, see
+@KollerProbabilisticgraphicalmodels2009, chapter 3.
+
+
+[^probabilistic-graphical-models]: For more on the application
+of probabilistic graphical models to the metaphysics of natural kinds see
+[redacted 2]. 
+
+    The source code that generates this probability distribution, and
+    calculates all data and generates all figures in the paper is published
+    under a free software license and can be downloaded from [link redacted].]
 
 ![Two homeostatic property clusters](graphviz/two_indepndent_bitbits.pdf)
 
-All in all, these Bayes nets behave the way Boydian HPCs are supposed to
+All in all, these Bayesian networks behave the way Boydian HPCs are supposed to
 behave: "There is a family ... of properties that are contingently clustered in
 nature in the sense that they co-occur in an important number of cases."
-[@BoydWhatRealismImplies1989, p. 16]. For the rest, I replicate the set-up of
-our previous example: the source produces a binary string, with each member of
-the string being 1 if the corresponding node is on, 0 if it's off. This message
-is encoded, goes through a channel, and is then decoded at the other side. The
-target distortion measure is, again, the Hamming distortion. Fig. 5 gives the
-rate distortion function for this model.
+[@BoydWhatRealismImplies1989, p. 16]. For the rest, the setup is analogous to
+that of the coin-toss example: the source produces a binary string, with each
+member of the string being 1 if the corresponding node is on, and 0 if it's
+off. This signal is encoded, goes through a channel, and is then decoded at the
+other side. The target distortion measure is, again, the Hamming distortion.
+So, for example, if the original message is 1001001110 (ten bits, corresponding
+to the ten properties) and the decoded message is 1101001010, the Hamming
+distortion would be 2---the two wrongly decoded bits are the second and the
+eighth. Fig. 6 plots the rate-distortion curve for this model.
 
 ![A sweet spot in the rate distortion
 function](/home/manolo/Models/rate_distortion_signaling/two_essence_kinds_rd_with_majority.pdf)
 
-This curve is very different from the one in Fig. 3 in that there is a clear
+This curve is very different from the one in Fig. 4: there is a clear
 distortion "sweet spot"---a dramatic decrease in the usefulness of extra
-rate---when the system hits 2 bit/s of rate, signaled by the sudden drop in the
-red slope curve. That is, both the statistical structure of the source (i.e.,
-the fact that the world of the model is populated with two HPC natural kinds)
-and the distortion measure conspire to make it the case that there is, in a
-certain principled sense, an optimal level of lossy compression; a way to set
-up an encoding-decoding strategy that recover most of what's going on in the
-world, even through a very severe, 2 bit bottleneck. I suggest that our
-representation-attributing practices gravitate towards this kind of systems.
-When we credit a vehicle with representational status, at least in certain
-paradigmatic cases, we are responding to the fact that it lives in a rate
-distortion curve with sweet spots. 
+rate---when the system hits a rate of 2 bit/use, marked by the sudden drop in
+the slope curve (in red). That is, there is, in a certain principled sense, an
+optimal level of lossy compression; a way to set up an encoding-decoding
+strategy that recover most of what's going on in the world of relevance to the
+information-processing system, even through a very severe, 2 bit bottleneck. I
+claim that this is no coincidence. Our representation-attributing practices
+gravitate towards this kind of situations. When we credit a vehicle with
+representational status, at least in certain paradigmatic cases, we are
+responding to the fact that it lives in a rate-distortion curve with sweet
+spots. 
 
-To see how sweet spots in rate distortion curves and representations are
-related, consider what an optimal encoding-decoding strategy would look like.
-That is, how should the encoder encode the information coming from the source,
-and how should the decoder decode the signal coming from the encoder, so that
-the resulting expected distortion between original and decoded message is the
-minimum achievable? This point is marked with an x over the blue curve in Fig.
-4, and one way for the encoder-decoder arrangement to land there is as follows:
+To see how sweet spots in rate-distortion curves and representations are
+related, consider now what an optimal encoding-decoding strategy would look
+like. That is, how should the encoder encode the information coming from the
+source, and how should the decoder decode the signal coming from the encoder,
+so that the resulting expected distortion between original and decoded signal
+is the minimum achievable, at the sweet spot? This point is marked with an x
+over the blue curve in fig. 6, and one way for an encoder-decoder pair to land
+there is to act according to the following strategies.
 
 Optimal Encoding Strategy:
 
-:   First divide the incoming message in two halves, one corresponding to
+:   First divide the incoming signal in two halves, one corresponding to
 properties $P_1$ through $P_5$; the other corresponding to properties $P_6$
 through $P_{10}$.
     
-    If there is a majority of 1s in the first half of the original message set
-    the first bit to 1. Otherwise set it to 0. Ditto for the second half of the
-    original message and the second bit.
+    If there is a majority of 1s in the first half of the original signal set
+    the first bit of the signal to 1. Otherwise set it to 0. Ditto for the second half of the
+    original signal and the second bit of the signal.
 
 Optimal Decoding Strategy:
 
 :   If the first bit in the incoming signal is 1, set the first half of the
-decoded message to 11111. Otherwise, set it to 00000. Ditto for the second bit
-and the second half of the decoded message.
+decoded signal to 11111. Otherwise, set it to 00000. Ditto for the second bit
+and the second half of the decoded signal.
 
-So, for example, 1110001100 encodes to 10: the first half of the original
-message, 11100, has a majority of 1s, and thus results in the first bit of the
-encoded signal being 1. The second half, 01100 has a majority of 0s and results
-in the second bit of the signal being a 0. 10, in turn, decodes to 1111100000,
-as per the optimal decoding strategy.
+So, for example, 1110001100 would encode to 10: the first half of the original
+signal, 11100, has a majority of 1s, and thus results in the first bit of the
+encoded signal being 1. The second half, 01100, has a majority of 0s and
+results in the second bit of the signal being a 0. 10, in turn, decodes to
+1111100000: the first bit translates into a first half of all ones in the
+            decoded message; the second bit into a second half of all zeros.
 
-This encoding-decoding strategy corresponds to the x in Fig. 5. It's the
-optimal strategy at the sweet spot. A natural way to interpret what encoder and
-decoder are doing here is using the presence or absence of properties in an HPC
-as diagnostic of the presence or absence of the underlying natural kind (this
-would be the encoding part) and then taking the resulting signals as indicative
-of the presence of a paradigmatic instance of the kind, one that has all the
-properties in the cluster---this would be the decoding part. HPC kinds being
-what they are, frequently the first half of the incoming message will resemble
-the paradigmatic presence of the first kind (11111) or its paradigmatic absence
-(00000), and the same will happen with the second half and the second kind.
-That is why this encoding-decoding strategy works so well. 
+This encoding-decoding strategy has the minimum achievable distorsion at the
+sweet spot. How should we interpret what encoder and decoder are doing here? A
+natural way is this: they are using the presence or absence of properties in an
+HPC cluster as diagnostic of the presence or absence of the underlying natural
+kind---this would be the encoding part---and then taking the resulting signals
+as representing the presence of a paradigmatic instance of the kind, one that
+has all the properties in the cluster---this would be the decoding part. HPC
+kinds being what they are, frequently the first half of the incoming signal
+will resemble the paradigmatic presence of the first kind (11111) or its
+paradigmatic absence (00000), and the same will happen with the second half and
+the second kind. That is why this encoding-decoding strategy works so well. 
 
 In describing this optimal strategy I have helped myself to representational
-talk; it has been useful in order to explain how the strategy works, and how
-come that behaving in this particular way achieves low distortion at low rates:
-it is because each of the two bits in the signal is caused by, and causes,
-behavior that is optimally sensitive to the probabilistic structure of each of
-the two natural kinds in the model world, respectively. Nothing going on in
-this system falls outside the purview of Shannonian information theory---of
-information theory *tout court*. Representational talk depends on no
-extra-informational fact, and this make it plausible that representations, at
-least in cases such as this, doesn't either. What has been relevant is,
-first, that *the world and the distortion measure conspire to create a sweet
-spot in the rate distortion curve*; and, second, that *the encoding-decoding
-strategy operates at (or near) this sweet spot*.
+vocabulary; it has been useful in order to explain how the strategy works, and
+how come that behaving in this particular way achieves low distortion at low
+rates: it is because each of the two bits in the signal is caused by, and
+causes, behavior that is optimally attuned to the probabilistic structure of
+each of the two natural kinds in the model world, respectively. Nothing going
+on in this system falls outside the purview of Shannonian information
+theory---of information theory *tout court*, so at least in this kind of cases
+representational talk depends on no non-informational fact.
 
 We can now understand better what's lacking in the philosopher of mind's
-information-theoretic tookit: it's entirely possible, and computationally
-trivial, to calculate, e.g., Skyrm's pointwise mutual information between each
-of the possible signals (00, 01, 10 and 11) ahd each possible world state (all
-1024 of them, from 0000000000 to 1111111111). It's equally trivial to calculate
-the same quantities in the coin toss model, for all world states (the two of
-them, heads and tails) and different signaling strategies. It's just as easy to
-calculate whether signals carry Shea-style correlational information about this
-or that world state, in both the two-natural-kinds and the coin-toss models.
+information-theoretic tookit: it is entirely possible, and computationally
+trivial, to calculate, e.g., Skyrm's pointwise mutual informations between each
+of the possible signals (00, 01, 10 and 11) and each of the possible world
+states (all 1024 of them, from 0000000000 to 1111111111). It's equally trivial
+to calculate the same quantities in the coin toss model, for all world states
+(the two of them, heads and tails) and different signaling strategies. It's
+just as easy to calculate whether signals carry Shea-style correlational
+information about this or that world state, in both the two-natural-kinds and
+the coin-toss models. 
 
-Brian Skyrms claims that "[i]f a signal carries propositional information, that
-information can be read off the informational content vector"
-[@SkyrmsSignalsEvolutionLearning2010, p. 41.] If by "propositional content" he
-means representational content, he is wrong about this. As we saw above his own
-gloss on representational content is unable to accommodate misrepresentation
-[@BirchPropositionalcontentsignalling2014]. The kind of information-theoretic
-formalism that, I have urged, should be used to investigate the nature of
-representation, on the other hand, is perfectly able to.
+Calculating Skyrms's informational content for every signal would leave us with
+4 vectors (one for each signal) with 1024 entries each (one for each world
+state.) First, this is an unwieldy collection of numbers, which doesn't bring
+out the relevant structure. For example, if, in the Bayesian networks of the
+source, the probability of children nodes being *on* conditional on their
+parent being *on* was .96 instead of .95 the rate-distortion curve would be
+qualitatively identical, with a sweet spot in exactly the same place, yet most
+numbers in the Skyrmsian informational content vectors would change. Second,
+and most important, nothing in those 4096 numbers allows us to infer the
+presence of a sweet spot. The relevant information is simply not there,
+depending as it does on a distortion measure which is not used in computing
+Skyrmsian informational contents.
 
-First of all, from the purely rate-distortion-theoretic perspective, it is very
-possible for the decoded message not to be equal to the original message in the
+If this is approximately right, the question about what makes representational
+talk explanatory is readily answered: saying that a certain vehicle is a
+representation conveys something quite specific about its informational
+context. It says that the vehicle is part of an encoding-decoding strategy that
+exploits a sweet spot in a rate-distortion curve---where the curve is in turn
+fixed by the probabilistic structure of the world, and the target distortion
+measure. This, in lay terms, translates to saying that the vehicle is
+summarizing *relevant* (this is where the distortion measure comes in) aspects
+of the current situation in an optimal, if lossy, manner, made possible by *how
+the world* is (this is where the probabilistic structure of the world comes
+in.) This explication of the explanatory contribution of representations can be
+turned into an explicit answer to what makes something a representation---an
+answer, that is, to what @NeanderMarkMentalDefense2017 calls the
+"representational status question" and
+@ArtigaLiberalRepresentationalismDeflationist2016 calls the "metasemantic
+question".
+
+The Rate-Distortion Approach: 
+
+:   A signal, $S$, in a certain information-processing pipeline, $P$, is a
+representation if the following two conditions are met:
+
+    Existence:
+
+    :   There are sweet spots in the rate-distortion curve associated with $P$.
+
+    Optimality:
+
+    :   $S$ is produced as part of an encoder-decoder strategy that occupies the vicinity of
+    one of these sweet spots.
+
+So, *pace* Dretske, the core information-theoretic notions of entropy, rate,
+distortion, etc. *can* provide invaluable insight into the representational
+status of individual signals. If the rate-distortion approach is on the right
+track, those information-theoretic notions, through the existence condition,
+specify the kind of setup where representations live, which then the optimality
+condition can use to provide a criterion for the representational status of
+individual signals. 
+
+It should be noted that both the notion of a sweet spot and that of a vicinity
+(in the existence and optimality conditions respectively) are vague. I have
+identified sweet spots with sudden slope drops. This is related with what
+computer scientists informally call the "elbow method": using "elbows" in a
+curve to signal thresholds between different types of behaviors. The elbows in
+question are not always clearly objective, let alone obvious, the upshot being
+that there might very well be borderline cases of a sweet spot (sweet-and-sour
+spots?) Analogously, the notion of vicinity is clearly vague: there is no
+answer to how close the strategy should be to the sweet spot for it to be in
+its vicinity. These is as it should be: representational status is not akin to
+set-theoretic membership, but should be seen as a *core-periphery* phenomenon.
+There are central cases of representation, and as we move away from them
+matters are less clear. Sweet spots and vicinities allow us to model
+quantitatively the distance between the center and the periphery of
+representational status, at least in the simplest cases of representation. 
+
+I offer the foregoing discussion as a preliminary case for the rate-distortion
+approach to representation: it shows how postulating representations is
+explanatory, even if these representations depend just on (Shannon)
+information. It illuminates the difference in representational status between
+Schulte's vasopressin, and other similar examples; and vervet alarm calls, and
+other similar examples. To complete my case (which will remain tentative, in
+any event) I now show how the approach treats misrepresentation (in section 5),
+and how the ways to bridge the gap between natural and nonnatural information
+discussed in section 3 can be seen as unwitting attempts to get at
+rate-distortion sweet spots (in section 6).
+
+# Misrepresentation
+
+I have presented the rate-distortion approach as a purely information-theoretic
+way of answering the metasemantic question of what makes something a
+representation. In passing, I have also suggested an informal way for it to
+bear on the semantic question of what actual content these representations
+have: one looks into the encoding-decoding strategy that the signal belongs to,
+and works out in which way the source's probabilistic structure is helping make
+this strategy optimal or near-optimal. With some luck, this process will
+eventuate in regions of the source probability distribution (say, subgraphs, if
+the distribution is given as a Bayesian network or any other kind of graph)
+presenting themselves as candidates to the reference of different
+signals.^[This is, of course, nothing but the most superficial gloss on what a
+rate-distortion answer to the semantic question would look like---I have no
+positive proposal to make about this, at this point, although I suspect that
+functional content, as defined in @SheaContentsimplesignalling2017, will be
+useful here.]
+
+While, as I say, I do not yet have a fully explicit answer to the semantic
+question, the alarm-call model I have developed in the last section lends
+itself to rather straightforward content attributions: a signal of the form
+*ab*, where *a* stands for the first bit and *b* for the second, means that a
+member of the first natural kind is present (absent) if *a* is 1 (0), and a
+member of the second natural kind is present (absent) if *b* is 1 (0). So,
+e.g., 10 means that the there's a member of the first natural kind around, but
+none of the second. Given this content attribution, misrepresentation is easily
+possible: first of all, from the purely rate-distortion-theoretic perspective, it is very
+possible for the decoded signal not to be equal to the original signal in the
 relevant respects---that is, it is very possible for the distortion of any
 particular original message-decoded message pair to be nonzero. More
-importantly, if, as I have suggested, the representational content of, e.g.,
-the signal "10" in the two-natural-kinds models is something along the lines of
-"the first natural kind is instantiated and the second is not", the production
-of this signal is perfectly compatible with the falsity of its content. In
-order to evaluate this rigorously we would need to fill in some metaphysical
-details, regarding what it takes for a natural kind to be instantiated, but
-under many plausible responses to this question, the fact remains that the
-signal can be false. Suppose, for example that our theory entails that the
-$P_1$ ... $P_5$ kind is instantiated iff its parent property, $P_1$, is
-instantiated.^[That is, we adhere to an essentialist metaphysics of kinds.
-Whether this would be a faithful description of the Kripke-Putnam approach to
-such metaphysics is unclear: here the relation between essence and superficial
+importantly, the production of signal is perfectly compatible with the falsity
+of their content (as glossed above). 
+
+In order to evaluate this rigorously we would need to fill in some metaphysical
+details, regarding what it takes for a natural kind to be instantiated---this
+is just an example of what @PeacockeTrulyUnderstood2008 calls 'dovetailing':
+whatever semantic account we develop needs to be compatible with our
+metaphysical account of the relevant referents. This is not the place to
+undertake this task; still, under many plausible candidate criteria of
+instantiability of kinds, signals can be false. Suppose, for example
+that our preferred metaphysics of kinds entails that the $P_1$ ... $P_5$ kind
+is instantiated iff its parent property, $P_1$, is instantiated.^[That is,
+suppose that we adhere to an essentialist metaphysics of kinds. Whether this
+would be a faithful description of the Kripke-Putnam approach to such
+metaphysics is unclear: here the relation between essence and superficial
 properties is noisy and, for example, in the model it's possible (if very
 unlikely) for the parent property to be instantiated without any of the
 children properties being instantiated as well. For an exploration of the
 probabilistic structure of essence kinds, homeostatic property clusters and
-other, more exotic options, see [redacted for review]] Because the
-instantiation of a majority of properties in the $P_2$ to $P_5$ range is
-compatible with the absence of $P_1$ it is equally possible for the encoder to
-set the first bit of the signal to 1 in the absence of any member of the first
-kind. If we choose as the criterion of presence of a kind member the same as
-the one we are using in the optimal encoding strategy (i.e., the presence of a
-majority of properties in the kind cluster) then misrepresentation is again
-impossible; but this is an artifact of the actual details of the example, not a
-limitation of the framework: suppose, for example, that the encoder only has
-access to the children nodes (the superficial properties) and not the parent
-node. This will be more biologically realistic in a number of cases---e.g.,
-when children properties are detectable features such as shape, color or voice,
-and the root property is, say, genetic or historical---, and the resulting
-encoding-decoding strategy, while not optimal is still very good.^[The optimal
-encoding-decoding strategy has an expected distortion of .40, and this
-children-only strategy, one of 0.41. The source code that calculates all data
-and generates the figures in the paper is published under a free software
-license and can be downloaded from [redacted for review]] It is possible for
-this encoder-decoder pair to misrepresent the presence of a member of a kind if
-the criterion of such presence is the instantiation of a majority of properties
-in the cluster.
+other, more exotic options, see [redacted 2]] Because the instantiation of a
+majority of properties in the $P_2$ to $P_5$ range is compatible with the
+absence of $P_1$ it is equally possible for the encoder to set the first bit of
+the signal to 1 in the absence of any member of the first kind. 
 
-The account of misrepresentation I have sketched here depends upon the idea
-that representational status, and representational content, is granted by the
-presence of, and proximity to, a rate-distortion sweet spot. Rate-distortion
-analyses do not apply to Skyrms's informational content, or any other of the
-ideas described in section 2, which rely on the fragment of the
-information-processing pipeline depicted in Fig. 2, and which consequently have
-no room for the notion of distortion.
+# There are no Gaps to Bridge
 
-I turn now to showing how the ways to bridge the gap between natural and
-non-natural information discussed in ssection 3 can be seen as unwitting
-attempts to get at rate-distortion sweet spots.
-
-# Bridging Gaps Again
-
-I have suggested above that the status of signals in an information processing
-pipeline as representations or not is sensitive to at least two
-information-theoretic condition: first an *existence condition* that there be a
-sweet spot in the rate distortion curve; second, an *optimality condition* that
-the encoding-decoding strategy implemented in the pipeline operates at (or
-near) this sweet spot.
+I have suggested above that whether signals in an information-processing
+pipeline count as representations or not is sensitive to two
+information-theoretic conditions: first an *existence condition* that there be
+sweet spots in the rate-distortion curve; second, an *optimality condition*
+that the encoding-decoding strategy implemented in the pipeline operates at (or
+near) a sweet spot.
 
 Now, what does it take for the existence condition to be met? That is to say,
 what circumstances result in sudden drops in the slope of the rate-distortion
 curve? We have seen one such family of circumstances: if the pattern in which
-properties are instantiated in the source is noisily replicated from property
-to property in a cluster then sudden drops will happen: distortion will
-decrease sharply with rate up until the point where all the main sources of
-variation in instantiation are accounted for, and all that remains is the
-residual noise in property instantiations within each cluster. Take a look
-again at Figs. 4 and 5: to describe this source we basically need enough rate
-to account for the two main sources of variation, $P_1$ and $P_6$. This is not
-all there is to the world, because it's possible for the other properties to
-(fail to) token independently of their parent, but the unlikeliness of these
-departures makes the extra rate comparatively less useful. 
+properties are instantiated in the source is noisily replicated in a property
+cluster then sudden drops are to be expected: distortion will decrease with
+rate up to the point where all the main sources of variation in property
+instantiations are accounted for, and all that remains is the residual noise in
+instantiations within each cluster. Take a look again at figs. 5 and
+6: to describe this source we basically need enough rate to account for the two
+main sources of variation: $P_1$ and $P_6$. This is not all there is to the
+world, because it's possible for the other properties to (fail to) token
+independently of their parent, but the unlikeliness of these departures
+makes the extra rate comparatively less useful. 
 
 Noisy replication of property instantiations is at the core of the homeostatic
-property cluster theory of natural kinds, as we saw above.^[[redacted 1] and
-[redacted 2] are more detailed explorations of the connections between
-information theory and the metaphysics of natural kinds.] This means that, in
-general, the presence of HPC natural kinds in a source will create sweet spots.
-This opens a line of argument in favor of reference magnetism from
-information-theoretic premises. Lewis and Sider (also Artiga, Martínez, and
-Ryder) are not pulling a rabbit out of the hat by insisting that natural, or
-real, entities are worthier referents than unnatural ones. They should be seen
-as making a point about the kind of probabilistic structure that an
-information-processing pipeline must be attuned to, if signals are to effect
+property cluster theory of natural kinds, as we saw
+above.[^redundancy] This means that, in general, the presence of HPC natural kinds in a source
+will create sweet spots. This opens a line of argument in favor of reference
+magnetism from information-theoretic premises: Lewis and Sider (also Artiga,
+Martínez, and Ryder) are not pulling a rabbit out of the hat by insisting that
+natural entities are worthier referents than unnatural ones. They
+should be seen as making a point about the kind of probabilistic structure that
+an information-processing pipeline must be attuned to, if signals are to effect
 the kind of optimal lossy compression that underlies our
-representation-attributing practices.
+representation-attributing practices. Reference magnetism is just a way of
+meeting part of the existence condition.
+
+[^redundancy]: [redacted 1] and [redacted 2] are more detailed explorations of
+the connections between information theory and the metaphysics of natural
+kinds. The HPC theory relies on what information theorists call "redundancy":
+the fact that (groups of) properties replicate the patterns of instantiation of
+other (groups of) properties . In [redacted
+2] I give reasons to think that the complementary property of "synergy" may
+underlie other, non-HPC natural kinds. Exploring how synergic kinds interact
+with the rate-distortion approach, though, is matter for another paper.
+
+    Redundant and synergic information are studied in the recently very popular
+    program of *partial information decomposition*. The foundational paper is
+    @WilliamsNonnegativedecompositionmultivariate2010.]
 
 Regarding the suggestion, by Sterelny, Burge and others, that representations
-inhere preferably on signals sitting in a one-to-many-to-one pipeline, I now
-show that the many-to-one aspect of this suggestion aims at meeting the
-optimality condition; the one-to-many aspect, together with reference
-magnetism, aims at meeting the existence condition. 
+inhere preferably on signals sitting in a one-to-many-to-one pipeline, I submit
+that the many-to-one aspect of this suggestion aims at meeting the optimality
+condition; the one-to-many aspect, together with reference magnetism, aims at
+meeting the existence condition. 
 
 The first thing to note here is that the *Optimal Encoding Strategy* presented
 above enforces what Sterelny calls robust tracking and Burge calls constancy:
 the strategy consists in considering *all* properties coming from each of the
 two clusters and setting the relevant bit to 1 only if a majority of those
-properties are tokened. That is the encoder is taking a multiplicity of
-configurations (e.g., the first half of the incoming message being 00111,
-01011, 10111, etc.) to a single output: the first bit of the signal being 1.
-Furthermore, that part of the signal will be decoded as 11111: from there on,
-the system downstream will treat whatever is out there in the world as a
-paradigmatic member of the first kind. That is, the systems is recovering the
-presence of a natural kind out of many different, noisy instantiation patterns.
-This is a clear instance of robust tracking / constancy. It is, moreover,
-instrumental in meeting the optimality condition. Suppose that the encoder
-depended on a single cue so that it set the first bit to 1 if one of the
-children properties (say, $P_2$) was instantiated, and to 0 otherwise. In such
-a cue-driven setup, the best encoder-decoder arrangement possible is marked by
-the blue circle in Fig. 6. This is much worse than the optimal encoding (marked
-by the blue cross) which sits right on top of the optimal rate distortion
-curve. A many-to-one architecture, then, is not just an extra-informational
-ingredient to an account of representation, as the theorists discussed in
-section 3 assume. It is integral to meeting the (purely informational)
-optimality condition.
+properties are instantiated.^[This makes sense in our idealized model in which
+each kind only has five properties. Or course, real, worldly natural kinds have
+indefinitely many properties, but it would still be true that considering, say,
+four or five of them for the purposes discussed in the main text would result
+in the same kind of sweet-spot situation.] That is, the encoder is taking a
+multiplicity of configurations (e.g., the first half of the incoming signal
+being 00111, 01011, 10111, etc.) to a single output: the first bit of the
+signal being 1. Furthermore, that part of the signal will be decoded as
+11111: from there on, the system downstream will treat whatever is out there in
+the world as a paradigmatic member of the first kind.^[I note in passing
+that the net result is something reminiscent of the prototype theory of
+concepts [@RoschPrinciplesCategorization1999]: the information that is
+reconstructed for further downstream processing is a prototype of the
+relevant natural kind: the probabilitically most common combination of
+features. It is interesting to speculate that the underpinnings of
+apparently prototype-driven behavior might be informational compression
+of the sort discussed here.] The system is recovering the presence of a
+natural kind out of many different, noisy instantiation patterns. This
+is a clear instance of robust tracking / constancy. 
 
+Now, this is how many-to-one architectures interact with the optimality
+condition: suppose that the encoder depended on a single cue so that it set the
+first bit to 1 if one of the children properties (say, $P_2$) was instantiated,
+and to 0 otherwise. In such a cue-driven setup, the best encoder-decoder
+arrangement possible is marked by the blue circle in Fig. 7. This is much worse
+than the optimal encoding (marked by the blue cross) which sits right on top of
+the optimal rate distortion curve. A many-to-one architecture, then, is not an
+non-informational ingredient to an account of representation, as the theorists
+discussed in section 3.1 assume; it is integral to meeting the optimality
+condition.
 
 ![Cue-driven
 encoding](/home/manolo/Models/rate_distortion_signaling/two_essence_kinds_rd_with_child_and_optimal.pdf)
@@ -901,92 +1113,79 @@ Finally, a rate distortion curve is defined by just two properties of the
 information-processing system: on the one hand, the probabilistic structure of
 the source (which, I have been arguing, is what reference-magnetism conditions
 are actually getting at); on the other hand, the target distortion measure.
-This latter ingredient can be seen as that which one-to-many conditions on
-representation are actually tracking. The distortion measure I have been using
-in the two natural kinds model is a Hamming distance over the whole message.
-Using this measure is tantamount to assuming that all of the properties of the
-natural kinds are relevant for downstream processing. One natural way in which
-this may happen is when the agent where the information processing happens is
-to response flexibly to the presence of the natural kind: in different contexts
-or states different properties of the kind might be relevant and, for example,
-the presence of a tree might be sometimes relevant to behavior because it bears
-fruit (if the agent is hungry) and some other times because it has a dense
-cover (if the agent is looking for shelter.)
+This latter ingredient can be seen as that which Sterelny's one-to-many
+condition on representation is actually tracking: the distortion measure I have
+been using in the two natural kinds model is a Hamming distance over the whole
+signal. Using this measure is tantamount to assuming that all^[Again here,
+"all" only because we are dealing with an idealized example. See the previous
+footnote.] of the properties of the natural kinds are relevant for downstream
+processing. One natural way in which this may happen is when the agent where
+the information processing happens is to respond flexibly to the presence of
+the natural kind: in different contexts or states different properties of the
+kind might be relevant and, for example, the presence of a tree might be
+sometimes relevant to behavior because it bears fruit (if the agent is hungry)
+and some other times because it has a dense cover (if the agent is looking for
+shelter.)
+
+![Rigid behavioral
+response](/home/manolo/Models/rate_distortion_signaling/two_essence_simple_rd.pdf)
 
 Caring about all (or many) properties of the kind is what makes the rate
 distortion curve display a sweet spot. If, instead, the agent has a rigid,
 stereotyped response to the presence of members of the kinds---that is, if it
 only cares about the presence of one property in each kind, which is the
 property that makes that rigid behavioral response fitness-conducive, then the
-curve is as presented in Fig. 7.
+curve is as presented in Fig. 8. That is, rigid behavioral responses make the
+probabilistic structure of the kinds largely irrelevant. As a result, the
+system behaves as if two coins were tossed, one for each kind, where heads
+would mean that the target property is tokened, and tails that it is not. This
+arrangement does not meet the existence condition. Sterelny's broad-banded
+responses are, again, a way of getting at rate-distortion sweet spots.
 
-![Rigid behavioral
-response](/home/manolo/Models/rate_distortion_signaling/two_essence_simple_rd.pdf)
+# Concluding Remarks
 
-That is, rigid behavioral responses (modeled here as a distortion measure that
-only cares about the properties that make the behavior in question
-fitness-conducive) turn the probabilistic structure of the kinds largely
-irrelevant. As a result, the system behaves as if two coins were tossed, one
-for each kind, where heands would mean that the target property is tokened, and
-tails that it is not. This arrangement does not meet the existence condition.
-Sterelny's broad-banded responses are, again, a way of getting at rate
-distortion sweet spots.
+We need to rethink the relation between information and representation. The way
+in which phenomena described in purely informational terms are relevant to
+representational status vastly outstrips the kind of probabilistic dependence
+(encoded, for example, as pointwise mutual information) that are singled out in
+the Drestkean tradition. The way to get at these other informational phenomena
+is, unsurprisingly, to exploit the many fundamental information-theoretic
+results accrued in the past sixty years. In particular, I have argued that
+rate-distortion theory helps uncover at least part of the structure that makes
+representations explanatory: if I am right, at least some representations are
+signals that sit close to a rate-distortion sweet spot. I have shown how this
+identification brings together a range of apparently unrelated moves in
+metasemantics under a unified, illuminating framework. 
 
-# Biological Plausibility of the Model
-
-This approach to representation is less minimalistic than the Dretskean one, at
-least in that it postulates an information-processing pipeline that includes an
-encoding and a decoding stage, as opposed to a simple relation between a signal
-and the state of affairs it carries information about. How biologically
-realistic is a model, say, of animal communication or mental representation,
-with these features? First, it is important not to read much into "encoder" and
-"decoder"; these processing stages are individuated by their causal profile,
-which might be extremely simple. In the model with two natural kinds that has
-served as my main example, the optimal encoding strategy (described in section
-4) has a very simple causal profile, as does the optimal decoding strategy. 
-
-It is easy to describe real-world situations where encoding-decoding models
-apply directly. One was introduced above: vervet monkeys use a number of
-perceptual cues to produce one of a discrete repertory of signals in the
-presence of predators, which are then used to produce behavior that is relevant
-to the presence of the predator in question [@SeyfarthMonkeyresponsesthree1980;
-@SeyfarthVervetmonkeyalarm1980]. The rate-distortion way to think of this
-communication setup goes as follows. The impact that predators have on fitness
-fixes the relevant distortion measure. Here, the properties relevant for the
-encoding stage and for the decoding stage need not be the same: the former will
-be detectable properties of the sort vervet monkeys use to recognize the
-presence of one or another predator (presumably, shape, color, motion patterns,
-etc.), while the latter will be related to what makes the behavior produced by
-the signal fitness-conducive; presumably, those related to the dangerousness of
-the predator, how hungry, and how fit they are. Of course, these encoding and
-decoding strategies should be ascertained empirically, and much of the research
-done on this problem may be seen as doing precisely this. What primatologists
-are tacitly doing, I suggest, is assume that this encoding-decoding strategy
-meets the existence and optimality conditions, and work out what is the
-relevant probabilistic structure of the environment, so that it creates a sweet
-spot for the alarm calls to sit in. The sweet spot is there: three kinds of
-predator induce a probabilistic structure similar to that of Fig. 4, and the
-distortion measure does the rest. The usual claim as to the content of these
-signals (i.e., that they communicate presence of leopards, eagles and snakes)
-follows from this identification of the relevant probabilistic structure of the
-source.
-
-Recently, moreover, explicit appeals to similar information-theoretic ideas
-have started to appear in the empirical literature, for related purposes. For
-example, in an influential, recent series of papers, Naftali Tishby and
-colleagues [@TishbyDeeplearninginformation2015;
-@Shwartz-ZivOpeningBlackBox2017] have proposed using the so-called *Information
-Bottleneck method* [@Tishbyinformationbottleneckmethod2000], an application of
-rate-distortion theory to information divergence as the target distortion
-measure [@Harremoesinformationbottleneckrevisited2007, p. 1], in the
-investigation of deep neural networks [DNNs]. One of the suggestions coming
-from this body of research is that "the goal of [DNNs] is to optimize the
-Information Bottleneck tradeoff between compression and prediction". While the
-details of this account, and its aims, are very different (and, in particular,
-the question of what counts as a representation, and what the content of
-representations should be, is not posed), the idea that DNNs aim at trading off
-compression (and, thus, rate) and prediction (which is intimately related to
-distortion) is clearly congenial to the ideas I have been developing here. 
+Taking full profit of information theory, moreover, should help philosophical
+naturalistic metasemantics make contact with contemporary trends in
+computational neuroscience, with its heavy reliance on information-theoretic
+analyses [@DimitrovInformationtheoryneuroscience2011].^[*Pace* Neander's claim
+that "[i]t is an open question to what extent the notion of information used in
+[the mind and brain] sciences ... is constrained by [information theory in the
+Shannonian tradition]" -@NeanderMarkMentalDefense2017, p. 7.] In particular,
+explicit appeals to similar information-theoretic ideas have started to appear
+in the neuroscientific literature, for related purposes. For example, in an
+influential, recent series of papers, Naftali Tishby and colleagues
+[@TishbyDeeplearninginformation2015; @Shwartz-ZivOpeningBlackBox2017] have
+proposed using the so-called *Information Bottleneck method*
+[@Tishbyinformationbottleneckmethod2000], an application of rate-distortion
+theory^[The information bottleneck method is equivalent to
+rate-distortiontheory when information divergence is used as the target
+distortion measure [@Harremoesinformationbottleneckrevisited2007,
+p. 1]] in the investigation of "optimal tradeoffs between compression and
+prediction" (*ibid*). This has been used, for example, in
+information-theoretic analyses of neural coding
+[@CreutzigPredictivecodingslowness2008;
+@BialekEfficientrepresentationdesign2006] and in the investigation of
+single-neuron behavior [@KlampflSpikingneuronscan2009;
+@Buesingspikingneuroninformation2010]. While the details of the Information
+Bottleneck account, and its aims, are very different from the ones of the
+rate-distortion approach (and, in particular, the question of what counts as
+a representation, and what the content of representations should be, is not
+posed), the idea that cognitive systems aim at trading off compression (and,
+thus, rate) and prediction (which is intimately related to distortion) is
+clearly congenial to the ideas I have been developing here. 
 
 In general, thinking of representational status as related to sweet spots in
 the rate-distortion trade off makes them fall under the very successful
@@ -996,22 +1195,5 @@ while taking into consideration the costs of computation"
 [@GershmanComputationalrationalityconverging2015, p. 273.]
 
 
-# Concluding Remarks
-
-Shannon's information theory offer an expressive formalism, together with a
-series of results that are of the utmost relevance to the investigation of
-representations and intentionality. 
-
-In particular, I have argued here that rate-distortion theory helps uncover at
-least part of the structure that makes representations explanatory: they would
-be, if I am right, signals that sit close to a rate-distortion sweet spot. This
-brings together a range of apparently unrelated moves in the naturalization of
-intentionality program under a unified, illuminating framework. This framework
-is not something that philosophers working in the Dretskean informational
-tradition could have easily formulated: the information-theoretic resources
-that have typically been deployed in this tradition do not include the latter
-stages in the information-processing pipeline (see the difference between Figs.
-1 and 2) that are central to describing things the rate-distortion way.
 
 # References {-}
-
