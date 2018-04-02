@@ -1,4 +1,4 @@
-% Sweet Spots and Bottlenecks
+% Representations as Rate-Distortion Sweet Spots
 
 # Introduction
 
@@ -12,38 +12,37 @@ RDT applies to situations in which information about a source is communicated
 over a channel that is not wide enough to accommodate lossless transmission.
 RDT, among other things, aims at specifying the dependence of the minimum
 amount of distortion between original and decoded messages on the width of the
-channel. The presence of such informational bottlenecks is ubiquitious (if not
-universal) in systems that we want to credit with representations. The paper
-explores the idea that the existence of certain optimal ways of negotiating
-these bottlenecks is part of what we track with representational talk.
+channel. The paper explores the idea that the existence of certain optimal ways
+of negotiating these limitations in channel width is part of what we track with
+representational talk.
 
 # Some preliminary concepts
 
 I will be assuming the very popular *sender-receiver* [SR] framework, utilized
-both in teleosemantic approaches [@millikan_language_1984] and game-theoretic
-treatments [@skyrms_signals:_2010] of representation. In the framework, a
-sender perceives the state of the world, then sends a message to a receiver
-which acts back on the world. The payoff of this interaction is fixed by the
-combination of world state and receiver action (see fig. 1.)
+both in teleosemantic approaches [@millikan_language_1984-1] and game-theoretic
+treatments [@skyrms_signals_2010] of representation. In the framework, a sender
+perceives the state of the world, then sends a message to a receiver which acts
+back on the world. The payoff of this interaction is fixed by the combination
+of world state and receiver action (see fig. 1.)
 
 ![The sender-receiver model](graphviz/sender-receiver-onepayoff.pdf){scale=0.5}
 
 There are a few attempts to use Shannon-informational notions to give an
 account of (not just the quantity of information transferred from sender to
 receiver but) what it is that messages represent in these sort of models
-[summarized in @stegmann_prospects_2015]. One popular such attempt is Skyrms's
-*informational content* of a message M, defined as the *pointwise mutual
-information* between M and all world states. Skyrms also claims that, if one so
-wishes, a notion of representational content falls out from this informational
-content: it corresponds to the nonzero entries in the informational-content
-vector in which there is some mutual information (giving contents along the
-lines of *$S_1$ or $S_2$ is the case.*) This approach is unable to accommodate
-the existence of false representational content [@birch_propositional_2014],
-and is thus inadequate.
+[summarized in @stegmann_ulrich_prospects_2015]. One popular such attempt is
+Skyrms's *informational content* of a message M, defined as the *pointwise
+mutual information* between M and all world states. Skyrms also claims that, if
+one so wishes, a notion of representational content falls out from this
+informational content: it corresponds to the nonzero entries in the
+informational-content vector in which there is some mutual information (giving
+contents along the lines of *$S_1$ or $S_2$ is the case.*) This approach is
+unable to accommodate the existence of false representational content
+[@birch_propositional_2014-1], and is thus inadequate.
 
 # The Rate-Distortion Approach
 
-A big problem with the SR model we have been considering so far is that the
+A problem with the SR model we have been considering so far is that the
 world is represented by a single RV. I.e., a menu of jointly exhaustive,
 mutually exclusive states. This is not expressive enough: we need to model the
 world not as a single RV, but rather as a collection of RVs---i.e., as a
@@ -54,15 +53,15 @@ properties.
 
 The main idea I will be exploring in what follows is that the explanatory
 payback that representational talk is supposed to have is met, in at least some
-important cases, by representations *lossily compressing* information about the
-world. Representations say a lot (that is relevant to the signaling partners)
-about the world, in an economic way. In most signaling arrangements, what
-should ideally be communicated about the world outstrips the capacity of the
-channel. One can thus see signaling arrangements as solving a rate-distorton
-problem: how large should the signaling repertoire be (that is, how much
-bandwidth / rate should the channel have) so as to minimize distortion, without
-incurring in too expensive signaling costs. Are there "sweet spots" in the rate
-distortion function?
+important cases, by representations doing *lossy compression* of the state of
+the world. Representations say a lot (that is relevant to the
+signaling partners) about the world, in an economic way. In most signaling
+arrangements, what should ideally be communicated about the world outstrips the
+capacity of the channel. One can thus see signaling arrangements as solving a
+rate-distorton problem: how large should the signaling repertoire be (that is,
+how much bandwidth / rate should the channel have) so as to minimize
+distortion, without incurring in too expensive signaling costs. Are there
+"sweet spots" in the rate distortion function?
 
 ![The rate-distortion function for a coin
 toss](/home/manolo/Models/rate_distortion_signaling/bernoulli_rd.pdf){scale=0.3}
